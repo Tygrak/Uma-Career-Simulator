@@ -1,0 +1,11 @@
+suzuka: (20% speed, 10% guts)
+speed lv1 - good, +13 speed, +5 pow, +2 sp
+pow lv1 - good, muteki50, flower40, +13 pow, +7 stam, +3 sp
+guts lv1 - good, kitasan50, tachyon45, +13 guts, +7 pow, +7 speed, +4 sp
+guts lv1 - good, kitasan50, +12 guts, +6 pow, +6 speed, +2 sp
+wit lv1 - good, flower40, tachyon45, director, +14 wit, +5 speed, +6 speed, +7 sp
+stamina lv1 - good, matikanefu30, muteki50, +12 stamina, +6 guts, +2 sp
+power lv1 - good, airgroove45, +10 pow, +6 stamina, +2 sp
+speed lv1 - great, airgroove45, +17 speed, +7 pow, +2 sp
+stamina lv1 - great, flower40, matikanefu30, +14 stamina, +7 guts, +3 sp
+wit lv1 - great, flower40, tachyon45, airgroove45, +20 wit, +7 speed, +10 sp

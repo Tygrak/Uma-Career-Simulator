@@ -1,0 +1,36 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: black;
+  color: white;
+}
+
+#app {
+  width: 60%;
+  margin: auto;
+}
+
+.smallNumber {
+  width: 2.5rem;
+}
+
+.mediumNumber {
+  width: 3.5rem;
+}
+
+.bigNumber {
+  width: 4.5rem;
+}
+
+.title {
+  font-size: 1.55rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  font-weight: 400;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
