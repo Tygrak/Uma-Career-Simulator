@@ -81,6 +81,9 @@ export class GameState {
     getTrainingEffect(id: number) {
         const facility = this.trainings[id];
         let base = Object.assign({}, facility.levels[facility.level]);
+        if (this.getIsSummerCamp()) {
+            base = Object.assign({}, facility.levels[4]);
+        }
         let moodEffect = 1;
         let trainingEffect = 1;
         let friendshipBonus = 1;
@@ -202,6 +205,28 @@ export class GameState {
         this.turnsRemaining--;
     }
 
+    doEvent() {
+        if (this.turn == 23) {
+            if (this.energy < 95) {
+                this.doGainEnergy(20);
+            } else {
+                this.speed += 10;
+            }
+        } else if (this.turn == 47) {
+            if (this.energy < 90) {
+                this.doGainEnergy(30);
+            } else {
+                this.doGainAllStats(5);
+            }
+        }
+    }
+
+    doResults() {
+        this.doGainAllStats(5);
+        this.doGainAllStats(15);
+        this.doGainAllStats(5);
+    }
+
     doGainAllStats(amount: number) {
         this.speed = Math.min(this.speed + amount, 1200);
         this.stamina = Math.min(this.stamina + amount, 1200);
@@ -210,12 +235,32 @@ export class GameState {
         this.wit = Math.min(this.wit + amount, 1200);
     }
 
-    doEvent() {
-
+    doGainEnergy(amount: number) {
+        this.energy = Math.max(Math.min(this.energy + amount, 100), 0);
     }
 
-    doResults() {
+    doGainMood(amount: number) {
+        this.mood = Math.max(Math.min(this.mood + amount, 2), -2);
+    }
 
+    getDaysBeforeSummerCamp() {
+        if (this.turn <= 35) {
+            return 36-this.turn;
+        }
+        if (this.turn <= 59) {
+            return 60-this.turn;
+        }
+        return 100;
+    }
+
+    getIsSummerCamp() {
+        if (this.turn >= 36 && this.turn <= 39) {
+            return true;
+        }
+        if (this.turn >= 60 && this.turn <= 63) {
+            return true;
+        }
+        return false;
     }
 
     getInheritSparkMultiple(num: number, stars: number) {
@@ -227,8 +272,10 @@ export class GameState {
     }
 
     getInheritSpark(stars: number) {
+        let compatibility = 0.2;
         let random = Math.random()*100;
         let chance = stars == 0 ? 70 : (stars == 1 ? 80 : 90);
+        chance = chance*(1+compatibility);
         if (random < chance) {
             return Math.floor(Math.random()*(stars == 0 ? 10 : (stars == 1 ? 16 : 28)));
         }
@@ -264,30 +311,37 @@ export class GameState {
             }
         }
 
-        this.trainings[id].trainingsDone++;
-        if (this.trainings[id].trainingsDone >= 16) {
-            this.trainings[id].level = 4;
-        } else if (this.trainings[id].trainingsDone >= 12) {
-            this.trainings[id].level = 3;
-        } else if (this.trainings[id].trainingsDone >= 8) {
-            this.trainings[id].level = 2;
-        } else if (this.trainings[id].trainingsDone >= 4) {
-            this.trainings[id].level = 1;
+        if (!this.getIsSummerCamp()) {
+            this.trainings[id].trainingsDone++;
+            if (this.trainings[id].trainingsDone >= 16) {
+                this.trainings[id].level = 4;
+            } else if (this.trainings[id].trainingsDone >= 12) {
+                this.trainings[id].level = 3;
+            } else if (this.trainings[id].trainingsDone >= 8) {
+                this.trainings[id].level = 2;
+            } else if (this.trainings[id].trainingsDone >= 4) {
+                this.trainings[id].level = 1;
+            }
         }
         this.doEndTurn();
     }
 
     doRest() {
-        let random = Math.random()*100;
-        if (random < 56) {
-            this.energy += 50;
-            this.allRefreshed++;
-        } else if (random < 84) {
-            this.energy += 70;
-            this.wellRested++;
+        if (this.getIsSummerCamp()) {
+            this.doGainEnergy(40);
+            this.doGainMood(1);
         } else {
-            this.energy += 30;
-            this.sleepDeprived++;
+            let random = Math.random()*100;
+            if (random < 56) {
+                this.doGainEnergy(50);
+                this.allRefreshed++;
+            } else if (random < 84) {
+                this.doGainEnergy(70);
+                this.wellRested++;
+            } else {
+                this.doGainEnergy(30);
+                this.sleepDeprived++;
+            }
         }
         this.doEndTurn();
     }
@@ -316,6 +370,10 @@ export class GameState {
 
     getStatsString() {
         return "speed: " + this.speed + ", stamina: " + this.stamina + ", power: " + this.power + ", guts: " + this.guts + ", wit: " + this.wit;
+    }
+
+    getTrainingsString() {
+        return "trainings: speed: " + this.trainings[0].trainingsDone + ", stamina: " + this.trainings[1].trainingsDone + ", power: " + this.trainings[2].trainingsDone + ", guts: " + this.trainings[3].trainingsDone + ", wit: " + this.trainings[4].trainingsDone + "";
     }
 
     getStatsSum() {

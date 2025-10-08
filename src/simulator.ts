@@ -48,7 +48,7 @@ export class Simulator {
             gameState.getCardPositions();
 
             this.log += "start " + i + "\n";
-            this.log += "cards " + gameState.cards.map(c => c.CardName) + " (race bonus: " + gameState.raceBonus + ")\n";
+            this.log += "cards " + gameState.cards.map(c => c.CardName) + " (race bonus: " + gameState.raceBonus.toFixed(2) + ")\n";
             while (gameState.turnsRemaining > 0) {
                 this.log += "turn: " + gameState.turn + "\n";
                 this.log += "state: " + gameState.getStatsString() + " (energy: " + gameState.energy + ")\n";
@@ -59,7 +59,7 @@ export class Simulator {
                 } else {
                     gameState.doTraining(id);
                 }
-                if (gameState.turn == 24 || gameState.turn == 48) {
+                if (gameState.turn == 32 || gameState.turn == 56) {
                     this.log += "post-inherit state: " + gameState.getStatsString() + " (turn: " + gameState.turn + ")\n";
                 }
                 this.log += "selected: " + id + "\n";
@@ -87,29 +87,37 @@ export class Simulator {
         for (let i = 0; i < 5; i++) {
             let effect = gameState.getTrainingEffect(i);
             results.push(effect);
-            let distSpeed = effect.speed*(1.1-Math.min((gameState.speed+effect.speed)/this.targetSpeed, 1)*0.5);
-            let distStamina = effect.stamina*(1.1-Math.min((gameState.stamina+effect.stamina)/this.targetStamina, 1)*0.5);
-            let distPower = effect.power*(1.1-Math.min((gameState.power+effect.power)/this.targetPower, 1)*0.5);
-            let distGuts = effect.guts*(1.1-Math.min((gameState.guts+effect.guts)/this.targetGuts, 1)*0.5);
-            let distWit = effect.wit*(1.1-Math.min((gameState.wit+effect.wit)/this.targetWit, 1)*0.5);
+            let distSpeed = effect.speed*(1.1-Math.min((gameState.speed+effect.speed)/this.targetSpeed, 1)*0.75);
+            let distStamina = effect.stamina*(1.1-Math.min((gameState.stamina+effect.stamina)/this.targetStamina, 1)*0.75);
+            let distPower = effect.power*(1.1-Math.min((gameState.power+effect.power)/this.targetPower, 1)*0.75);
+            let distGuts = effect.guts*(1.1-Math.min((gameState.guts+effect.guts)/this.targetGuts, 1)*0.75);
+            let distWit = effect.wit*(1.1-Math.min((gameState.wit+effect.wit)/this.targetWit, 1)*0.75);
             let value = (distSpeed+distStamina+distPower+distGuts+distWit)*(1-effect.failureChance*0.01);
             if (effect.energy > 0 && gameState.energy+effect.energy <= 100) {
                 value += Math.min(effect.energy, 100-gameState.energy);
             }
-            this.log += i+": " + effect.speed + ", " + effect.stamina + ", " + effect.power + ", " + effect.guts + ", " + effect.wit + " = " + value.toFixed(2) + " (fail: " + effect.failureChance + ", lvl: " + gameState.trainings[i].level + ")\n";
+            if (gameState.getDaysBeforeSummerCamp() < 3) {
+                value += (Math.min(effect.energy+gameState.energy, 100)-80)*(3-gameState.getDaysBeforeSummerCamp())*0.5;
+            }
+            this.log += i+": " + effect.speed + ", " + effect.stamina + ", " + effect.power + ", " + effect.guts + ", " + effect.wit + " = " + value.toFixed(2) + " (fail: " + effect.failureChance + ", lvl: " + (gameState.getIsSummerCamp() ? 4 : gameState.trainings[i].level) + ")\n";
             if (value > valueMax) {
                 valueMax = value;
                 valueMaxId = i;
                 valueMaxFailure = effect.failureChance;
             }
         }
-        if ((gameState.energy < 50 && valueMax < 30) || valueMaxFailure > 30) {
+        if ((gameState.energy < 60 && valueMax < 10) || (gameState.energy < 50 && valueMax < 30) || valueMaxFailure > 30) {
             return -1;
         }
         return valueMaxId;
     }
 
     GetDistFromTargetSum(gameState: GameState) {
-        return gameState.speed/this.targetSpeed + gameState.stamina/this.targetStamina + gameState.power/this.targetPower + gameState.guts/this.targetGuts + gameState.wit/this.targetWit;
+        let result = Math.min(gameState.speed/this.targetSpeed, 1);
+        result += Math.min(gameState.stamina/this.targetStamina, 1);
+        result += Math.min(gameState.power/this.targetPower, 1);
+        result += Math.min(gameState.guts/this.targetGuts, 1);
+        result += Math.min(gameState.wit/this.targetWit, 1);
+        return result;
     }
 }

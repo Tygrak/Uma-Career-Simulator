@@ -34,3 +34,10 @@ body {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 1rem;
+  margin-top: 1rem;
+}

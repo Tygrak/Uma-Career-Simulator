@@ -8,83 +8,104 @@
         
         <div id="app">
             <div id="title" class="title">Uma Career Simulator</div>
-            <div class="subtitle">Cards</div>
-            <div id="cards">
-                <select class="card"></select>
-                Lvl
-                <input type="number" class="cardLevel smallNumber" value="50">
-                <br>
-                <select class="card"></select>
-                Lvl
-                <input type="number" class="cardLevel smallNumber" value="50">
-                <br>
-                <select class="card"></select>
-                Lvl
-                <input type="number" class="cardLevel smallNumber" value="50">
-                <br>
-                <select class="card"></select>
-                Lvl
-                <input type="number" class="cardLevel smallNumber" value="50">
-                <br>
-                <select class="card"></select>
-                Lvl
-                <input type="number" class="cardLevel smallNumber" value="50">
-                <br>
-                <select class="card"></select>
-                Lvl
-                <input type="number" class="cardLevel smallNumber" value="50">
+            <div class="options">
+                <div class="option">
+                    <div class="subtitle">Cards</div>
+                    <div id="cards">
+                        <select class="card"></select>
+                        Lvl
+                        <input type="number" class="cardLevel smallNumber" value="50">
+                        <br>
+                        <select class="card"></select>
+                        Lvl
+                        <input type="number" class="cardLevel smallNumber" value="50">
+                        <br>
+                        <select class="card"></select>
+                        Lvl
+                        <input type="number" class="cardLevel smallNumber" value="50">
+                        <br>
+                        <select class="card"></select>
+                        Lvl
+                        <input type="number" class="cardLevel smallNumber" value="50">
+                        <br>
+                        <select class="card"></select>
+                        Lvl
+                        <input type="number" class="cardLevel smallNumber" value="50">
+                        <br>
+                        <select class="card"></select>
+                        Lvl
+                        <input type="number" class="cardLevel smallNumber" value="50">
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="subtitle">Stat Growths</div>
+                    <div>
+                        Speed
+                        <input type="number" id="speedGrowth" class="smallNumber" value="0.2">
+                        <br>
+                        Stamina
+                        <input type="number" id="staminaGrowth" class="smallNumber" value="0.0">
+                        <br>
+                        Power
+                        <input type="number" id="powerGrowth" class="smallNumber" value="0.0">
+                        <br>
+                        Guts
+                        <input type="number" id="gutsGrowth" class="smallNumber" value="0.1">
+                        <br>
+                        Wit
+                        <input type="number" id="witGrowth" class="smallNumber" value="0.0">
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="subtitle">Target Stats</div>
+                    <div>
+                        Speed
+                        <input type="number" id="speedTarget" class="bigNumber" value="1200">
+                        <br>
+                        Stamina
+                        <input type="number" id="staminaTarget" class="bigNumber" value="550">
+                        <br>
+                        Power
+                        <input type="number" id="powerTarget" class="bigNumber" value="900">
+                        <br>
+                        Guts
+                        <input type="number" id="gutsTarget" class="bigNumber" value="300">
+                        <br>
+                        Wit
+                        <input type="number" id="witTarget" class="bigNumber" value="900">
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="subtitle">Sparks</div>
+                    <div>
+                        Speed 1, 2, 3
+                        <input type="number" id="speedSparks1" class="smallNumber" value="0"> <input type="number" id="speedSparks2" class="smallNumber" value="0"> <input type="number" id="speedSparks3" class="smallNumber" value="0">
+                        <br>
+                        Stamina 1, 2, 3
+                        <input type="number" id="staminaSparks1" class="smallNumber" value="0"> <input type="number" id="staminaSparks2" class="smallNumber" value="2"> <input type="number" id="staminaSparks3" class="smallNumber" value="2">
+                        <br>
+                        Power 1, 2, 3
+                        <input type="number" id="powerSparks1" class="smallNumber" value="0"> <input type="number" id="powerSparks2" class="smallNumber" value="0"> <input type="number" id="powerSparks3" class="smallNumber" value="2">
+                        <br>
+                        Guts 1, 2, 3
+                        <input type="number" id="gutsSparks1" class="smallNumber" value="0"> <input type="number" id="gutsSparks2" class="smallNumber" value="0"> <input type="number" id="gutsSparks3" class="smallNumber" value="0">
+                        <br>
+                        Wit 1, 2, 3
+                        <input type="number" id="witSparks1" class="smallNumber" value="0"> <input type="number" id="witSparks2" class="smallNumber" value="0"> <input type="number" id="witSparks3" class="smallNumber" value="0">
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="subtitle">Simulated Runs</div>
+                    <div>
+                        <input type="number" id="simulatedRuns" class="bigNumber" value="200">
+                    </div>
+                    <div class="subtitle">Show Percentile</div>
+                    <div>
+                        <input type="number" id="showPercentile" class="bigNumber" value="75">
+                    </div>
+                </div>
             </div>
-            <div class="subtitle">Stat Growths</div>
-            <div>
-                Speed
-                <input type="number" id="speedGrowth" class="smallNumber" value="0.2">
-                <br>
-                Stamina
-                <input type="number" id="staminaGrowth" class="smallNumber" value="0.0">
-                <br>
-                Power
-                <input type="number" id="powerGrowth" class="smallNumber" value="0.0">
-                <br>
-                Guts
-                <input type="number" id="gutsGrowth" class="smallNumber" value="0.1">
-                <br>
-                Wit
-                <input type="number" id="witGrowth" class="smallNumber" value="0.0">
-            </div>
-            <div class="subtitle">Target Stats</div>
-            <div>
-                Speed
-                <input type="number" id="speedTarget" class="bigNumber" value="1200">
-                <br>
-                Stamina
-                <input type="number" id="staminaTarget" class="bigNumber" value="550">
-                <br>
-                Power
-                <input type="number" id="powerTarget" class="bigNumber" value="900">
-                <br>
-                Guts
-                <input type="number" id="gutsTarget" class="bigNumber" value="300">
-                <br>
-                Wit
-                <input type="number" id="witTarget" class="bigNumber" value="900">
-            </div>
-            <div class="subtitle">Sparks</div>
-            <div>
-                Speed 1, 2, 3
-                <input type="number" id="speedSparks1" class="smallNumber" value="0"> <input type="number" id="speedSparks2" class="smallNumber" value="0"> <input type="number" id="speedSparks3" class="smallNumber" value="0">
-                <br>
-                Stamina 1, 2, 3
-                <input type="number" id="staminaSparks1" class="smallNumber" value="0"> <input type="number" id="staminaSparks2" class="smallNumber" value="2"> <input type="number" id="staminaSparks3" class="smallNumber" value="2">
-                <br>
-                Power 1, 2, 3
-                <input type="number" id="powerSparks1" class="smallNumber" value="0"> <input type="number" id="powerSparks2" class="smallNumber" value="0"> <input type="number" id="powerSparks3" class="smallNumber" value="2">
-                <br>
-                Guts 1, 2, 3
-                <input type="number" id="gutsSparks1" class="smallNumber" value="0"> <input type="number" id="gutsSparks2" class="smallNumber" value="0"> <input type="number" id="gutsSparks3" class="smallNumber" value="0">
-                <br>
-                Wit 1, 2, 3
-                <input type="number" id="witSparks1" class="smallNumber" value="0"> <input type="number" id="witSparks2" class="smallNumber" value="0"> <input type="number" id="witSparks3" class="smallNumber" value="0">
-            </div>
+            <br>
             <button id="submitButton">Run</button>
             
             <div class="subtitle">Log</div>

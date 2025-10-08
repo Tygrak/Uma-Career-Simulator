@@ -44,10 +44,17 @@ submitButton.onclick = (e) => {
         simulator.sparksGuts[i-1] = parseInt((document.getElementById("gutsSparks"+i) as HTMLInputElement).value);
         simulator.sparksWit[i-1] = parseInt((document.getElementById("witSparks"+i) as HTMLInputElement).value);
     }
-    simulator.RunSimulator(100);
-    let percentile75 = simulator.GetResultsPercentile(75);
+    simulator.RunSimulator(parseInt((document.getElementById("simulatedRuns") as HTMLInputElement).value));
+    let percentile = parseInt((document.getElementById("showPercentile") as HTMLInputElement).value);
+    let percentile74 = simulator.GetResultsPercentile(percentile-1);
+    let percentile75 = simulator.GetResultsPercentile(percentile);
+    let percentile76 = simulator.GetResultsPercentile(percentile+1);
     console.log(percentile75.gameState);
-    logDiv.innerText = percentile75.gameState.getStatsString() + "\n" + percentile75.gameState.getStatsSum() + ", " + simulator.GetDistFromTargetSum(percentile75.gameState) + "\n\n" + percentile75.log;
+    let logText = percentile74.gameState.getStatsString() + ", " + percentile74.gameState.getStatsSum() + ", " + simulator.GetDistFromTargetSum(percentile74.gameState).toFixed(2) + ", " + percentile74.gameState.getTrainingsString() + ", " + "\n";
+    logText += percentile75.gameState.getStatsString() + ", " + percentile75.gameState.getStatsSum() + ", " + simulator.GetDistFromTargetSum(percentile75.gameState).toFixed(2) + ", " + percentile75.gameState.getTrainingsString() + "\n";
+    logText += percentile76.gameState.getStatsString() + ", " + percentile76.gameState.getStatsSum() + ", " + simulator.GetDistFromTargetSum(percentile76.gameState).toFixed(2) + ", " + percentile76.gameState.getTrainingsString() + "\n\n";
+    logText += percentile75.log;
+    logDiv.innerText = logText;
 };
 
 function InitializeCardSelects() {
@@ -64,9 +71,9 @@ function InitializeCardSelects() {
             namesSSR.push(name);
         }
     }
-    namesSSR.sort();
-    namesSR.sort();
-    namesR.sort();
+    namesSSR.sort((a, b) => a.replace(/\[.+\]/, "").localeCompare(b.replace(/\[.+\]/, "")));
+    namesSR.sort((a, b) => a.replace(/\[.+\]/, "").localeCompare(b.replace(/\[.+\]/, "")));
+    namesR.sort((a, b) => a.replace(/\[.+\]/, "").localeCompare(b.replace(/\[.+\]/, "")));
     for (let i = 0; i < cardSelects.length; i++) {
         let optgroup = document.createElement('optgroup');
         optgroup.label = "SSR";
@@ -101,16 +108,27 @@ function InitializeCardSelects() {
 
     cardSelects[0].value = "[Fire at My Heels] Kitasan Black";
     cardLevels[0].value = "50";
+    cardSelects[0].onchange = (e) => {onCardSelectUpdated(0)};
     cardSelects[1].value = "[First-Rate Plan] King Halo";
     cardLevels[1].value = "45";
+    cardSelects[1].onchange = (e) => {onCardSelectUpdated(1)};
     cardSelects[2].value = "[5:00 a.m.\u2014Right on Schedule] Eishin Flash";
     cardLevels[2].value = "45";
-    cardSelects[3].value = "[Let\u0027s Get This Party Lit!] Daitaku Helios";
+    cardSelects[2].onchange = (e) => {onCardSelectUpdated(2)};
+    cardSelects[3].value = "[Messing Around] Nice Nature";
     cardLevels[3].value = "45";
+    cardSelects[3].onchange = (e) => {onCardSelectUpdated(3)};
     cardSelects[4].value = "[A Marvelous \u2606 Plan] Marvelous Sunday";
     cardLevels[4].value = "45";
+    cardSelects[4].onchange = (e) => {onCardSelectUpdated(4)};
     cardSelects[5].value = "[Wave of Gratitude] Fine Motion";
     cardLevels[5].value = "50";
+    cardSelects[5].onchange = (e) => {onCardSelectUpdated(5)};
+}
+
+function onCardSelectUpdated(id: number) {
+    let card = SupportCard.getByName(cardSelects[id].value);
+    cardLevels[id].value = (card.Rarity == 3 ? 50 : (card.Rarity == 2 ? 45 : 40)).toString();
 }
 
 function Initialize() {
