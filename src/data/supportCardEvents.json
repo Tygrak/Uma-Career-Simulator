@@ -1,0 +1,455 @@
+[
+    {
+        "name": "[Fire at My Heels] Kitasan Black",
+        "chainEvents": [
+            {
+                "name": "Chasing Brilliance",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 1,
+                            "bond": 5,
+                            "speed": 2,
+                            "stamina": 0,
+                            "power": 2,
+                            "guts": 0,
+                            "wit": 2,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Paying It Forward",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": 10,
+                            "mood": 1,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Straightaway Adept 1"
+                            ],
+                            "status": ""
+                        },
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 10,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Straightaway Adept 3"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "We Walk Together",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Professor of Curvature 1"
+                            ],
+                            "status": ""
+                        },
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 10,
+                            "stamina": 0,
+                            "power": 10,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Professor of Curvature 3"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Ah, Friendship",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 1,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Ah, Home Sweet Home",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 10,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Practice Perfect ○"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[First-Rate Plan] King Halo",
+        "chainEvents": [
+            {
+                "name": "First-Rate Coaching",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 10,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "First-Rate Advice",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 15,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 15,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "You May Socialize With Me!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": -20,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 10,
+                            "stamina": 0,
+                            "power": 10,
+                            "guts": 0,
+                            "wit": 5,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": -1,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 25,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "You May Advise Me!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 10,
+                            "wit": 5,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Homestretch Haste 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[5:00 a.m.\u2014Right on Schedule] Eishin Flash",
+        "chainEvents": [
+            {
+                "name": "A Good Manager",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 1,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Maximum Energy +4"
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "A Good Friend",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 20,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Homestretch Haste 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Unforeseen Lunch",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 15,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 5,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Responding to the Unforeseen",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 10,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Target in Sight ○ 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[blank] blank",
+        "chainEvents": [],
+        "events": []
+    }
+]

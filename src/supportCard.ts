@@ -1,4 +1,5 @@
-import * as supportCardsData from "./data/supportCardsData.json";
+import supportCardsData from "./data/supportCardsData.json";
+import supportCardsEventData from "./data/supportCardEvents.json";
 
 export enum SupportCardType {
     Speed = 0,
@@ -81,19 +82,31 @@ export class SupportCard {
     }
 
     static getByName(name: string): SupportCard {
-        let card = supportCardsData.find(c => c.CardName.includes(name) && c.Rarity == 3);
+        let card = this.getAllCards().find(c => c.CardName.includes(name) && c.Rarity == 3);
         if (card === undefined) {
-            card = supportCardsData.find(c => c.CardName.includes(name) && c.Rarity == 2);
+            card = this.getAllCards().find(c => c.CardName.includes(name) && c.Rarity == 2);
         }
         if (card === undefined) {
-            card = supportCardsData.find(c => c.CardName.includes(name) && c.Rarity == 1);
+            card = this.getAllCards().find(c => c.CardName.includes(name) && c.Rarity == 1);
         }
         return this.fromJSON(card);
     }
 
     static getByNameAndRarity(name: string, rarity: number): SupportCard {
-        let card = supportCardsData.find(c => c.CardName.includes(name) && c.Rarity == rarity);
+        let card = this.getAllCards().find(c => c.CardName.includes(name) && c.Rarity == rarity);
         return this.fromJSON(card);
+    }
+    
+    static allcards: SupportCard[] = [];
+
+    static getAllCards(): SupportCard[] {
+        if (this.allcards.length == 0) {
+            let cardsJson: any[] = supportCardsData;
+            let cards = cardsJson.map(c => this.fromJSON(c));
+            this.allcards = cards;
+            return cards;
+        }
+        return this.allcards;
     }
 
     toString(): string {
@@ -232,5 +245,39 @@ export class SupportCardEffect {
         return Math.floor(
             ((level - downLevel) / (upLevel - downLevel)) * (upEffect - downEffect) + downEffect
         );
+    }
+}
+
+export class SupportCardEvent {
+    name: string = "";
+    choices: SupportCardEventResult[][] = [];
+
+    static fromJSON(data: any): SupportCardEvent {
+        const event = new SupportCardEvent();
+        Object.assign(event, data);
+        event.choices = (data.choices || []).map(
+            (e: any) => e.map((r: any) => SupportCardEventResult.fromJSON(r))
+        );
+        return event;
+    }
+}
+
+export class SupportCardEventResult {
+    probability = 50;
+    energy = 0;
+    mood = 0;
+    bond = 0;
+    speed = 0;
+    stamina = 0;
+    power = 0;
+    guts = 0;
+    wit = 0;
+    skillPoints = 0;
+    skillHints: string[] = []; 
+
+    static fromJSON(data: any): SupportCardEventResult {
+        const result = new SupportCardEventResult();
+        Object.assign(result, data);
+        return result;
     }
 }

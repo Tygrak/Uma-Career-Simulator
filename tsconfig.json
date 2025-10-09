@@ -10,6 +10,7 @@
         "target": "es5",
         "resolveJsonModule": true,
         "allowJs": true,
+        "allowSyntheticDefaultImports": true
     },
     "include": [
         "./src/**/*"

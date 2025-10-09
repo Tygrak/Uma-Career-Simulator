@@ -1,10 +1,16 @@
 import { GameState } from "./gameState";
+import { Parent } from "./parent";
 import { SupportCard, SupportCardEffectType, SupportCardType } from "./supportCard";
 
 export class Simulator {
     results: GameState[] = [];
     cards: SupportCard[] = [];
     cardLevels: number[] = [];
+    
+    fixedCards: SupportCard[] = [];
+    fixedCardLevels: number[] = [];
+    availableCards: SupportCard[] = [];
+    availableCardLevels: number[] = [];
     
     speedGrowth = 0.2;
     staminaGrowth = 0;
@@ -17,17 +23,74 @@ export class Simulator {
     targetPower = 600;
     targetGuts = 300;
     targetWit = 600;
-    
-    sparksSpeed = [0, 0, 0];
-    sparksStamina = [0, 0, 0];
-    sparksPower = [0, 0, 0];
-    sparksGuts = [0, 0, 0];
-    sparksWit = [0, 0, 0];
+
+    sparksParent: Parent[] = [];
+    sparksGrandparent: Parent[] = [];
 
     log = "";
     logs: string[] = [];
 
+    FindOptimalDeck(runs: number, percentile: number) {
+        this.results = [];
+        this.logs = [];
+        
+        let emptySlots = [];
+        for (let i = 0; i < this.fixedCards.length; i++) {
+            if (this.fixedCards[i].CardName ==  "") {
+                emptySlots.push(i);
+            }
+        }
+        if (this.availableCards.length < emptySlots.length) {
+            console.warn("Not enough available cards selected");
+            return "Not enough available cards selected";
+        }
+        if (emptySlots.length == 0) {
+            this.RunSimulator(runs);
+            return "No empty slots, running for selected deck";
+        }
+        
+
+        let combinationsScores = [];
+        let combinations = this.getCombinations(emptySlots.length, this.availableCards.length);
+        for (let c = 0; c < combinations.length; c++) {
+            if (c > 100) {
+                console.warn("Too many combinations, ending");
+                break;
+            }
+            this.makeDeckForCombination(combinations[c]);
+            this.RunSimulator(runs);
+            let result = this.GetResultsPercentile(percentile);
+            combinationsScores.push(this.GetDistFromTargetSum(result.gameState));
+        }
+        let result = "";
+        let combos = combinations.map((c, id) => {return {combination: c, score: combinationsScores[id]};});
+        let best = [];
+        combos.sort((a, b) => b.score - a.score);
+        for (let i = 0; i < 3; i++) {
+            if (i >= combos.length) {
+                break;
+            }
+            this.makeDeckForCombination(combos[i].combination);
+            this.RunSimulator(runs);
+            let percentile74 = this.GetResultsPercentile(percentile-1);
+            let percentile75 = this.GetResultsPercentile(percentile);
+            let percentile76 = this.GetResultsPercentile(percentile+1);
+
+            best.push(percentile75);
+            
+            let logText = percentile74.gameState.getStatsString() + ", " + percentile74.gameState.getStatsSum() + ", " + this.GetDistFromTargetSum(percentile74.gameState).toFixed(2) + ", " + percentile74.gameState.getTrainingsString() + ", " + "\n";
+            logText += percentile75.gameState.getStatsString() + ", " + percentile75.gameState.getStatsSum() + ", " + this.GetDistFromTargetSum(percentile75.gameState).toFixed(2) + ", " + percentile75.gameState.getTrainingsString() + "\n";
+            logText += percentile76.gameState.getStatsString() + ", " + percentile76.gameState.getStatsSum() + ", " + this.GetDistFromTargetSum(percentile76.gameState).toFixed(2) + ", " + percentile76.gameState.getTrainingsString() + "\n\n";
+            result += (i+1) + ". " + this.cards.map(c => " " + c.CardName) + ", race bonus: " + percentile75.gameState.raceBonus.toFixed(2) + " (score: " + combos[i].score.toFixed(4) + ")\n"+logText+"\n\n";
+        }
+        return result;
+    }
+
     RunSimulator(runs: number) {
+        if (this.cards.length == 0) {
+            this.cards = this.fixedCards;
+            this.cardLevels = this.fixedCardLevels;
+        }
         for (let i = 0; i < runs; i++) {
             this.log = "";
             let gameState = new GameState(); 
@@ -38,11 +101,8 @@ export class Simulator {
             gameState.powerGrowth = this.powerGrowth;
             gameState.gutsGrowth = this.gutsGrowth;
             gameState.witGrowth = this.witGrowth;
-            gameState.sparksSpeed = this.sparksSpeed;
-            gameState.sparksStamina = this.sparksStamina;
-            gameState.sparksPower = this.sparksPower;
-            gameState.sparksGuts = this.sparksGuts;
-            gameState.sparksWit = this.sparksWit;
+            gameState.sparksParent = this.sparksParent;
+            gameState.sparksGrandparent = this.sparksGrandparent;
             gameState.initRun();
 
             gameState.getCardPositions();
@@ -65,10 +125,10 @@ export class Simulator {
                 this.log += "selected: " + id + "\n";
             }
             this.results.push(gameState);
-            console.log(gameState);
-            console.log(gameState.getStatsString());
+            //console.log(gameState);
+            //console.log(gameState.getStatsString());
             this.log += "finalstate: " + gameState.getStatsString()+ "\n\n";
-            this.logs[i] = this.log;
+            this.logs.push(this.log);
         }
     }
 
@@ -93,6 +153,7 @@ export class Simulator {
             let distGuts = effect.guts*(1.1-Math.min((gameState.guts+effect.guts)/this.targetGuts, 1)*0.75);
             let distWit = effect.wit*(1.1-Math.min((gameState.wit+effect.wit)/this.targetWit, 1)*0.75);
             let value = (distSpeed+distStamina+distPower+distGuts+distWit)*(1-effect.failureChance*0.01);
+            value += effect.skillPoints*0.25;
             if (effect.energy > 0 && gameState.energy+effect.energy <= 100) {
                 value += Math.min(effect.energy, 100-gameState.energy);
             }
@@ -119,5 +180,42 @@ export class Simulator {
         result += Math.min(gameState.guts/this.targetGuts, 1);
         result += Math.min(gameState.wit/this.targetWit, 1);
         return result;
+    }
+    
+    getCombinations(length: number, maxValue: number): number[][] {
+        const result: number[][] = [];
+
+        function backtrack(start: number, combo: number[]): void {
+            if (combo.length === length) {
+                result.push([...combo]);
+                return;
+            }
+
+            for (let i = start; i < maxValue; i++) {
+                combo.push(i);
+                backtrack(i + 1, combo);
+                combo.pop();
+            }
+        }
+
+        backtrack(0, []);
+        return result;
+    }
+    
+    makeDeckForCombination(combination: number[]) {
+        let emptySlots = [];
+        for (let i = 0; i < this.fixedCards.length; i++) {
+            if (this.fixedCards[i].CardName ==  "") {
+                emptySlots.push(i);
+            }
+        }
+        let deck = [...this.fixedCards];
+        let levels = [...this.fixedCardLevels];
+        for (let i = 0; i < emptySlots.length; i++) {
+            deck[emptySlots[i]] = this.availableCards[combination[i]];
+            levels[emptySlots[i]] = this.availableCardLevels[combination[i]];
+        }
+        this.cards = deck;
+        this.cardLevels = levels;
     }
 }

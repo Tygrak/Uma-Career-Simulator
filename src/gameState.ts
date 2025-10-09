@@ -1,6 +1,7 @@
 import { SupportCard, SupportCardEffectType, SupportCardType } from "./supportCard";
 
-import * as trainingData from "./data/trainingData.json";
+import trainingData from "./data/trainingData.json";
+import { Parent } from "./parent";
 
 export class GameState {
     turn: number = 0;
@@ -31,11 +32,8 @@ export class GameState {
     allRefreshed = 0;
     sleepDeprived = 0;
 
-    sparksSpeed = [0, 0, 0];
-    sparksStamina = [0, 0, 0];
-    sparksPower = [0, 0, 0];
-    sparksGuts = [0, 0, 0];
-    sparksWit = [0, 0, 0];
+    sparksParent: Parent[] = [];
+    sparksGrandparent: Parent[] = [];
 
     cardLevels: number[] = [50, 50, 50, 50, 50, 50];
     cards: SupportCard[] = [];
@@ -161,20 +159,20 @@ export class GameState {
             this.wit += card.getEffectStrengthAtLevel(this.cardLevels[i], SupportCardEffectType.InitialWit);
             this.raceBonus += card.getEffectStrengthAtLevel(this.cardLevels[i], SupportCardEffectType.RaceBonus)*0.01;
         }
-        this.speed += this.sparksSpeed[0]*5+this.sparksSpeed[1]*12+this.sparksSpeed[2]*21;
-        this.stamina += this.sparksStamina[0]*5+this.sparksStamina[1]*12+this.sparksStamina[2]*21;
-        this.power += this.sparksPower[0]*5+this.sparksPower[1]*12+this.sparksPower[2]*21;
-        this.guts += this.sparksGuts[0]*5+this.sparksGuts[1]*12+this.sparksGuts[2]*21;
-        this.wit += this.sparksWit[0]*5+this.sparksWit[1]*12+this.sparksWit[2]*21;
+        for (let i = 0; i < this.sparksParent.length; i++) {
+            this.doGainStat(this.sparksParent[i].sparkLevel == 1 ? 5 : (this.sparksParent[i].sparkLevel == 2 ? 12 : 21), this.sparksParent[i].sparkAttribute);
+        }
+        for (let i = 0; i < this.sparksGrandparent.length; i++) {
+            this.doGainStat(this.sparksGrandparent[i].sparkLevel == 1 ? 5 : (this.sparksGrandparent[i].sparkLevel == 2 ? 12 : 21), this.sparksGrandparent[i].sparkAttribute);
+        }
     }
 
     doInherit() {
-        for (let i = 0; i < 3; i++) {
-            this.speed += this.getInheritSparkMultiple(this.sparksSpeed[i], i);
-            this.stamina += this.getInheritSparkMultiple(this.sparksStamina[i], i);
-            this.power += this.getInheritSparkMultiple(this.sparksPower[i], i);
-            this.guts += this.getInheritSparkMultiple(this.sparksGuts[i], i);
-            this.wit += this.getInheritSparkMultiple(this.sparksWit[i], i);
+        for (let i = 0; i < this.sparksParent.length; i++) {
+            this.doInheritSpark(true, this.sparksParent[i]);
+        }
+        for (let i = 0; i < this.sparksGrandparent.length; i++) {
+            this.doInheritSpark(false, this.sparksGrandparent[i]);
         }
     }
 
@@ -235,6 +233,20 @@ export class GameState {
         this.wit = Math.min(this.wit + amount, 1200);
     }
 
+    doGainStat(amount: number, id: number) {
+        if (id == 0) {
+            this.speed = Math.min(this.speed + amount, 1200);
+        } else if (id == 1) {
+            this.stamina = Math.min(this.stamina + amount, 1200);
+        } else if (id == 2) {
+            this.power = Math.min(this.power + amount, 1200);
+        } else if (id == 3) {
+            this.guts = Math.min(this.guts + amount, 1200);
+        } else if (id == 4) {
+            this.wit = Math.min(this.wit + amount, 1200);
+        }
+    }
+
     doGainEnergy(amount: number) {
         this.energy = Math.max(Math.min(this.energy + amount, 100), 0);
     }
@@ -263,23 +275,17 @@ export class GameState {
         return false;
     }
 
-    getInheritSparkMultiple(num: number, stars: number) {
-        let result = 0;
-        for (let i = 0; i < num; i++) {
-            result += this.getInheritSpark(stars);
-        }
-        return result;
-    }
-
-    getInheritSpark(stars: number) {
+    doInheritSpark(isParent: boolean, parent: Parent) {
         let compatibility = 0.2;
         let random = Math.random()*100;
-        let chance = stars == 0 ? 70 : (stars == 1 ? 80 : 90);
+        let chance = parent.sparkLevel == 1 ? 70 : (parent.sparkLevel == 2 ? 80 : 90);
+        if (!isParent) {
+            chance *= 0.5;
+        }
         chance = chance*(1+compatibility);
         if (random < chance) {
-            return Math.floor(Math.random()*(stars == 0 ? 10 : (stars == 1 ? 16 : 28)));
+            this.doGainStat(Math.floor(1+Math.random()*(parent.sparkLevel == 1 ? 10 : (parent.sparkLevel == 2 ? 16 : 28))), parent.sparkAttribute);
         }
-        return 0;
     }
 
     doTraining(id: number) {

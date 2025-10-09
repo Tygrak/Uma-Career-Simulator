@@ -1,4 +1,4 @@
-import * as supportCardsData from "./data/supportCardsData.json";
+import { Parent } from "./parent";
 import { Simulator } from "./simulator";
 
 import "./styles.css";
@@ -7,26 +7,48 @@ import { SupportCard, SupportCardEffect, SupportCardEffectType, SupportCardRarit
 import { testTrainings } from "./testGameState";
 
 const submitButton = document.getElementById("submitButton") as HTMLButtonElement;
+const removeCardButton = document.getElementById("removeCardButton") as HTMLButtonElement;
+const addCardButton = document.getElementById("addCardButton") as HTMLButtonElement;
+const clearAllButton = document.getElementById("clearAllButton") as HTMLButtonElement;
+const cardPresetsSelect = document.getElementById("cardPreset") as HTMLSelectElement;
 const logDiv = document.getElementById("log") as HTMLDivElement;
-const cardSelects = document.getElementsByClassName("card") as HTMLCollectionOf<HTMLSelectElement>;
-const cardLevels = document.getElementsByClassName("cardLevel") as HTMLCollectionOf<HTMLInputElement>;
+const availableCardsDiv = document.getElementById("availableCards") as HTMLDivElement;
+const cardSelects = document.getElementsByClassName("fixedCard") as HTMLCollectionOf<HTMLSelectElement>;
+const cardLevels = document.getElementsByClassName("fixedLevel") as HTMLCollectionOf<HTMLInputElement>;
+
+let availableCardBrs: HTMLBRElement[] = [];
+let availableCardSelects: HTMLSelectElement[] = [];
+let availableCardLevels: HTMLInputElement[] = [];
 
 submitButton.onclick = (e) => {
     console.log("Run");
     let cardjsons = [];
     let levelStrings = [];
     for (let i = 0; i < cardSelects.length; i++) {
-        cardjsons.push(supportCardsData.find(c => c.CardName == cardSelects[i].value));
+        if (cardSelects[i].value == "Empty") {
+            cardjsons.push({});
+        } else {
+            cardjsons.push(SupportCard.getAllCards().find(c => c.CardName == cardSelects[i].value));
+        }
         levelStrings.push(cardLevels[i].value);
     }
     let cards = cardjsons.map(c => SupportCard.fromJSON(c));
     let levels = levelStrings.map(l => parseInt(l));
     console.log(cards);
     console.log(cards[0].getEffectStrengthAtLevel(levels[0], SupportCardEffectType.TrainingEffectiveness));
+    
+    let availableCards = [];
+    let availableLevels = [];
+    for (let i = 0; i < availableCardSelects.length; i++) {
+        availableCards.push(SupportCard.fromJSON(SupportCard.getAllCards().find(c => c.CardName == availableCardSelects[i].value)));
+        availableLevels.push(parseInt(availableCardLevels[i].value));
+    }
 
     let simulator = new Simulator();
-    simulator.cards = cards;
-    simulator.cardLevels = levels;
+    simulator.fixedCards = cards;
+    simulator.fixedCardLevels = levels;
+    simulator.availableCards = availableCards;
+    simulator.availableCardLevels = availableLevels;
     simulator.speedGrowth = parseInt((document.getElementById("speedGrowth") as HTMLInputElement).value);
     simulator.staminaGrowth = parseInt((document.getElementById("staminaGrowth") as HTMLInputElement).value);
     simulator.powerGrowth = parseInt((document.getElementById("powerGrowth") as HTMLInputElement).value);
@@ -37,15 +59,16 @@ submitButton.onclick = (e) => {
     simulator.targetPower = parseInt((document.getElementById("powerTarget") as HTMLInputElement).value);
     simulator.targetGuts = parseInt((document.getElementById("gutsTarget") as HTMLInputElement).value);
     simulator.targetWit = parseInt((document.getElementById("witTarget") as HTMLInputElement).value);
-    for (let i = 1; i <= 3; i++) {
-        simulator.sparksSpeed[i-1] = parseInt((document.getElementById("speedSparks"+i) as HTMLInputElement).value);
-        simulator.sparksStamina[i-1] = parseInt((document.getElementById("staminaSparks"+i) as HTMLInputElement).value);
-        simulator.sparksPower[i-1] = parseInt((document.getElementById("powerSparks"+i) as HTMLInputElement).value);
-        simulator.sparksGuts[i-1] = parseInt((document.getElementById("gutsSparks"+i) as HTMLInputElement).value);
-        simulator.sparksWit[i-1] = parseInt((document.getElementById("witSparks"+i) as HTMLInputElement).value);
+    let parentSparks = document.getElementsByClassName("parentSpark") as HTMLCollectionOf<HTMLSelectElement>;
+    let grandparentSparks = document.getElementsByClassName("grandparentSpark") as HTMLCollectionOf<HTMLSelectElement>;
+    for (let i = 0; i < parentSparks.length; i++) {
+        simulator.sparksParent.push(Parent.fromString(parentSparks[i].value));
     }
-    simulator.RunSimulator(parseInt((document.getElementById("simulatedRuns") as HTMLInputElement).value));
+    for (let i = 0; i < grandparentSparks.length; i++) {
+        simulator.sparksGrandparent.push(Parent.fromString(grandparentSparks[i].value));
+    }
     let percentile = parseInt((document.getElementById("showPercentile") as HTMLInputElement).value);
+    let result = simulator.FindOptimalDeck(parseInt((document.getElementById("simulatedRuns") as HTMLInputElement).value), percentile);
     let percentile74 = simulator.GetResultsPercentile(percentile-1);
     let percentile75 = simulator.GetResultsPercentile(percentile);
     let percentile76 = simulator.GetResultsPercentile(percentile+1);
@@ -54,81 +77,164 @@ submitButton.onclick = (e) => {
     logText += percentile75.gameState.getStatsString() + ", " + percentile75.gameState.getStatsSum() + ", " + simulator.GetDistFromTargetSum(percentile75.gameState).toFixed(2) + ", " + percentile75.gameState.getTrainingsString() + "\n";
     logText += percentile76.gameState.getStatsString() + ", " + percentile76.gameState.getStatsSum() + ", " + simulator.GetDistFromTargetSum(percentile76.gameState).toFixed(2) + ", " + percentile76.gameState.getTrainingsString() + "\n\n";
     logText += percentile75.log;
-    logDiv.innerText = logText;
+    logDiv.innerText = result + "\n\n\n" + logText;
 };
 
+//todo: add  find borrow card option (automatically check all SSRs that aren't already in deck)
+
+addCardButton.onclick = (e) => {
+    AddAvailableCard();
+}
+
+clearAllButton.onclick = (e) => {
+    ClearAvailableCards();
+    cardPresetsSelect.value = "none";
+}
+
+removeCardButton.onclick = (e) => {
+    RemoveAvailableCard();
+}
+
+cardPresetsSelect.onchange = (e) => {
+    if (cardPresetsSelect.value == "allSSR") {
+        ClearAvailableCards();
+        let ssrs = SupportCard.getAllCards().filter(c => c.Rarity == 3);
+        for (let i = 0; i < ssrs.length; i++) {
+            if (Array.from(cardSelects).find(c => c.value == ssrs[i].CardName) === undefined) {
+                AddAvailableCard(ssrs[i].CardName);
+            }
+        }
+    }
+}
+
+function ClearAvailableCards() {
+    while (availableCardSelects.length > 0) {
+        RemoveAvailableCard();
+    }
+}
+
+function AddAvailableCard(name: string = "") {
+    console.log("Added card");
+
+    let br = document.createElement('br');
+    let input = document.createElement('input');
+    input.type = "number";
+    input.classList = "cardLevel smallNumber";
+    input.value = "50";
+
+    let select = document.createElement('select');
+    select.onchange = (e) => {onCardSelectUpdated(select, input)};
+    select.classList = "card";
+    InitializeCardSelect(select, false);
+
+    availableCardBrs.push(br);
+    availableCardSelects.push(select);
+    availableCardLevels.push(input);
+    availableCardsDiv.appendChild(select);
+    availableCardsDiv.appendChild(input);
+    availableCardsDiv.appendChild(br);
+
+    if (name != "") {
+        select.value = SupportCard.getByName(name).CardName;
+    }
+}
+
+function RemoveAvailableCard() {
+    if (availableCardSelects.length > 0) {
+        console.log("Removed card");
+        availableCardsDiv.removeChild(availableCardBrs[availableCardBrs.length-1]);
+        availableCardsDiv.removeChild(availableCardSelects[availableCardSelects.length-1]);
+        availableCardsDiv.removeChild(availableCardLevels[availableCardLevels.length-1]);
+        availableCardBrs.pop();
+        availableCardSelects.pop();
+        availableCardLevels.pop();
+    }
+}
+
 function InitializeCardSelects() {
+    for (let i = 0; i < cardSelects.length; i++) {
+        InitializeCardSelect(cardSelects[i]);
+    }
+
+    cardSelects[0].value = "[Fire at My Heels] Kitasan Black";
+    cardLevels[0].value = "50";
+    cardSelects[0].onchange = (e) => {onCardSelectUpdated(cardSelects[0], cardLevels[0])};
+    cardSelects[1].value = "[First-Rate Plan] King Halo";
+    cardLevels[1].value = "45";
+    cardSelects[1].onchange = (e) => {onCardSelectUpdated(cardSelects[1], cardLevels[1])};
+    cardSelects[2].value = "[5:00 a.m.\u2014Right on Schedule] Eishin Flash";
+    cardLevels[2].value = "45";
+    cardSelects[2].onchange = (e) => {onCardSelectUpdated(cardSelects[2], cardLevels[2])};
+    cardSelects[3].value = "[Messing Around] Nice Nature";
+    cardLevels[3].value = "45";
+    cardSelects[3].onchange = (e) => {onCardSelectUpdated(cardSelects[3], cardLevels[3])};
+    cardSelects[4].value = "[A Marvelous \u2606 Plan] Marvelous Sunday";
+    cardLevels[4].value = "45";
+    cardSelects[4].onchange = (e) => {onCardSelectUpdated(cardSelects[4], cardLevels[4])};
+    cardSelects[5].value = "[Wave of Gratitude] Fine Motion";
+    cardLevels[5].value = "50";
+    cardSelects[5].onchange = (e) => {onCardSelectUpdated(cardSelects[5], cardLevels[5])};
+}
+
+function InitializeCardSelect(select: HTMLSelectElement, hasEmptyOption: boolean = true) {
     let namesSSR = [];
     let namesSR = [];
     let namesR = [];
-    for (let i = 0; i < supportCardsData.length; i++) {
-        let name = supportCardsData[i].CardName;
-        if (supportCardsData[i].Rarity == 1) {
+    for (let i = 0; i < SupportCard.getAllCards().length; i++) {
+        let name = SupportCard.getAllCards()[i].CardName;
+        if (SupportCard.getAllCards()[i].Rarity == 1) {
             namesR.push(name);
-        } else if (supportCardsData[i].Rarity == 2) {
+        } else if (SupportCard.getAllCards()[i].Rarity == 2) {
             namesSR.push(name);
-        } else if (supportCardsData[i].Rarity == 3) {
+        } else if (SupportCard.getAllCards()[i].Rarity == 3) {
             namesSSR.push(name);
         }
     }
     namesSSR.sort((a, b) => a.replace(/\[.+\]/, "").localeCompare(b.replace(/\[.+\]/, "")));
     namesSR.sort((a, b) => a.replace(/\[.+\]/, "").localeCompare(b.replace(/\[.+\]/, "")));
     namesR.sort((a, b) => a.replace(/\[.+\]/, "").localeCompare(b.replace(/\[.+\]/, "")));
-    for (let i = 0; i < cardSelects.length; i++) {
-        let optgroup = document.createElement('optgroup');
-        optgroup.label = "SSR";
-        for (let j = 0; j < namesSSR.length; j++) {
-            let option = document.createElement('option');
-            option.value = namesSSR[j];
-            option.innerHTML = namesSSR[j];
-            optgroup.appendChild(option);
-        }
-        cardSelects[i].appendChild(optgroup);
 
-        optgroup = document.createElement('optgroup');
-        optgroup.label = "SR";
-        for (let j = 0; j < namesSR.length; j++) {
-            let option = document.createElement('option');
-            option.value = namesSR[j];
-            option.innerHTML = namesSR[j];
-            optgroup.appendChild(option);
-        }
-        cardSelects[i].appendChild(optgroup);
-
-        optgroup = document.createElement('optgroup');
-        optgroup.label = "R";
-        for (let j = 0; j < namesR.length; j++) {
-            let option = document.createElement('option');
-            option.value = namesR[j];
-            option.innerHTML = namesR[j];
-            optgroup.appendChild(option);
-        }
-        cardSelects[i].appendChild(optgroup);
+    if (hasEmptyOption) {
+        let emptyOption = document.createElement('option');
+        emptyOption.value = "Empty";
+        emptyOption.innerHTML = "Empty";
+        select.appendChild(emptyOption);
     }
 
-    cardSelects[0].value = "[Fire at My Heels] Kitasan Black";
-    cardLevels[0].value = "50";
-    cardSelects[0].onchange = (e) => {onCardSelectUpdated(0)};
-    cardSelects[1].value = "[First-Rate Plan] King Halo";
-    cardLevels[1].value = "45";
-    cardSelects[1].onchange = (e) => {onCardSelectUpdated(1)};
-    cardSelects[2].value = "[5:00 a.m.\u2014Right on Schedule] Eishin Flash";
-    cardLevels[2].value = "45";
-    cardSelects[2].onchange = (e) => {onCardSelectUpdated(2)};
-    cardSelects[3].value = "[Messing Around] Nice Nature";
-    cardLevels[3].value = "45";
-    cardSelects[3].onchange = (e) => {onCardSelectUpdated(3)};
-    cardSelects[4].value = "[A Marvelous \u2606 Plan] Marvelous Sunday";
-    cardLevels[4].value = "45";
-    cardSelects[4].onchange = (e) => {onCardSelectUpdated(4)};
-    cardSelects[5].value = "[Wave of Gratitude] Fine Motion";
-    cardLevels[5].value = "50";
-    cardSelects[5].onchange = (e) => {onCardSelectUpdated(5)};
+    let optgroup = document.createElement('optgroup');
+    optgroup.label = "SSR";
+    for (let j = 0; j < namesSSR.length; j++) {
+        let option = document.createElement('option');
+        option.value = namesSSR[j];
+        option.innerHTML = namesSSR[j];
+        optgroup.appendChild(option);
+    }
+    select.appendChild(optgroup);
+
+    optgroup = document.createElement('optgroup');
+    optgroup.label = "SR";
+    for (let j = 0; j < namesSR.length; j++) {
+        let option = document.createElement('option');
+        option.value = namesSR[j];
+        option.innerHTML = namesSR[j];
+        optgroup.appendChild(option);
+    }
+    select.appendChild(optgroup);
+
+    optgroup = document.createElement('optgroup');
+    optgroup.label = "R";
+    for (let j = 0; j < namesR.length; j++) {
+        let option = document.createElement('option');
+        option.value = namesR[j];
+        option.innerHTML = namesR[j];
+        optgroup.appendChild(option);
+    }
+    select.appendChild(optgroup);
 }
 
-function onCardSelectUpdated(id: number) {
-    let card = SupportCard.getByName(cardSelects[id].value);
-    cardLevels[id].value = (card.Rarity == 3 ? 50 : (card.Rarity == 2 ? 45 : 40)).toString();
+function onCardSelectUpdated(cardSelect: HTMLSelectElement, cardLevel: HTMLInputElement) {
+    let card = SupportCard.getByName(cardSelect.value);
+    cardLevel.value = (card.Rarity == 3 ? 50 : (card.Rarity == 2 ? 45 : 40)).toString();
 }
 
 function Initialize() {

@@ -12,29 +12,41 @@
                 <div class="option">
                     <div class="subtitle">Cards</div>
                     <div id="cards">
-                        <select class="card"></select>
+                        <select class="card fixedCard"></select>
                         Lvl
-                        <input type="number" class="cardLevel smallNumber" value="50">
+                        <input type="number" class="cardLevel smallNumber fixedLevel" value="50">
                         <br>
-                        <select class="card"></select>
+                        <select class="card fixedCard"></select>
                         Lvl
-                        <input type="number" class="cardLevel smallNumber" value="50">
+                        <input type="number" class="cardLevel smallNumber fixedLevel" value="50">
                         <br>
-                        <select class="card"></select>
+                        <select class="card fixedCard"></select>
                         Lvl
-                        <input type="number" class="cardLevel smallNumber" value="50">
+                        <input type="number" class="cardLevel smallNumber fixedLevel" value="50">
                         <br>
-                        <select class="card"></select>
+                        <select class="card fixedCard"></select>
                         Lvl
-                        <input type="number" class="cardLevel smallNumber" value="50">
+                        <input type="number" class="cardLevel smallNumber fixedLevel" value="50">
                         <br>
-                        <select class="card"></select>
+                        <select class="card fixedCard"></select>
                         Lvl
-                        <input type="number" class="cardLevel smallNumber" value="50">
+                        <input type="number" class="cardLevel smallNumber fixedLevel" value="50">
                         <br>
-                        <select class="card"></select>
+                        <select class="card fixedCard"></select>
                         Lvl
-                        <input type="number" class="cardLevel smallNumber" value="50">
+                        <input type="number" class="cardLevel smallNumber fixedLevel" value="50">
+                    </div>
+                    <div class="subtitle">Available Cards</div>
+                    <div>
+                        <button id="clearAllButton">Clear All</button>
+                        <button id="removeCardButton">Remove Card</button>
+                        <button id="addCardButton">Add Card</button>
+                        Presets
+                        <select id="cardPreset">
+                            <option value="none">None</option>
+                            <option value="allSSR">All SSR cards</option>
+                        </select>
+                        <div id="availableCards"></div>
                     </div>
                 </div>
                 <div class="option">
@@ -55,8 +67,6 @@
                         Wit
                         <input type="number" id="witGrowth" class="smallNumber" value="0.0">
                     </div>
-                </div>
-                <div class="option">
                     <div class="subtitle">Target Stats</div>
                     <div>
                         Speed
@@ -78,30 +88,130 @@
                 <div class="option">
                     <div class="subtitle">Sparks</div>
                     <div>
-                        Speed 1, 2, 3
-                        <input type="number" id="speedSparks1" class="smallNumber" value="0"> <input type="number" id="speedSparks2" class="smallNumber" value="0"> <input type="number" id="speedSparks3" class="smallNumber" value="0">
+                        Parent 1
+                        <select id="parentSpark1" class="parentSpark">
+                            <option value="speed1">Speed ★☆☆</option>
+                            <option value="speed2">Speed ★★☆</option>
+                            <option value="speed3">Speed ★★★</option>
+                            <option value="stamina1">Stamina ★☆☆</option>
+                            <option value="stamina2">Stamina ★★☆</option>
+                            <option value="stamina3" selected>Stamina ★★★</option>
+                            <option value="power1">Power ★☆☆</option>
+                            <option value="power2">Power ★★☆</option>
+                            <option value="power3">Power ★★★</option>
+                            <option value="guts1">Guts ★☆☆</option>
+                            <option value="guts2">Guts ★★☆</option>
+                            <option value="guts3">Guts ★★★</option>
+                            <option value="wit1">Wit ★☆☆</option>
+                            <option value="wit2">Wit ★★☆</option>
+                            <option value="wit3">Wit ★★★</option>
+                        </select>
                         <br>
-                        Stamina 1, 2, 3
-                        <input type="number" id="staminaSparks1" class="smallNumber" value="0"> <input type="number" id="staminaSparks2" class="smallNumber" value="2"> <input type="number" id="staminaSparks3" class="smallNumber" value="2">
+                        Grandparent 1a
+                        <select id="grandparentSpark1a" class="grandparentSpark" value="stamina3">
+                            <option value="speed1">Speed ★☆☆</option>
+                            <option value="speed2">Speed ★★☆</option>
+                            <option value="speed3">Speed ★★★</option>
+                            <option value="stamina1">Stamina ★☆☆</option>
+                            <option value="stamina2">Stamina ★★☆</option>
+                            <option value="stamina3" selected>Stamina ★★★</option>
+                            <option value="power1">Power ★☆☆</option>
+                            <option value="power2">Power ★★☆</option>
+                            <option value="power3">Power ★★★</option>
+                            <option value="guts1">Guts ★☆☆</option>
+                            <option value="guts2">Guts ★★☆</option>
+                            <option value="guts3">Guts ★★★</option>
+                            <option value="wit1">Wit ★☆☆</option>
+                            <option value="wit2">Wit ★★☆</option>
+                            <option value="wit3">Wit ★★★</option>
+                        </select>
                         <br>
-                        Power 1, 2, 3
-                        <input type="number" id="powerSparks1" class="smallNumber" value="0"> <input type="number" id="powerSparks2" class="smallNumber" value="0"> <input type="number" id="powerSparks3" class="smallNumber" value="2">
+                        Grandparent 1b
+                        <select id="grandparentSpark1b" class="grandparentSpark" value="stamina3">
+                            <option value="speed1">Speed ★☆☆</option>
+                            <option value="speed2">Speed ★★☆</option>
+                            <option value="speed3">Speed ★★★</option>
+                            <option value="stamina1">Stamina ★☆☆</option>
+                            <option value="stamina2">Stamina ★★☆</option>
+                            <option value="stamina3" selected>Stamina ★★★</option>
+                            <option value="power1">Power ★☆☆</option>
+                            <option value="power2">Power ★★☆</option>
+                            <option value="power3">Power ★★★</option>
+                            <option value="guts1">Guts ★☆☆</option>
+                            <option value="guts2">Guts ★★☆</option>
+                            <option value="guts3">Guts ★★★</option>
+                            <option value="wit1">Wit ★☆☆</option>
+                            <option value="wit2">Wit ★★☆</option>
+                            <option value="wit3">Wit ★★★</option>
+                        </select>
+                        
                         <br>
-                        Guts 1, 2, 3
-                        <input type="number" id="gutsSparks1" class="smallNumber" value="0"> <input type="number" id="gutsSparks2" class="smallNumber" value="0"> <input type="number" id="gutsSparks3" class="smallNumber" value="0">
+                        Parent 2
+                        <select id="parentSpark2" class="parentSpark" value="stamina3">
+                            <option value="speed1">Speed ★☆☆</option>
+                            <option value="speed2">Speed ★★☆</option>
+                            <option value="speed3">Speed ★★★</option>
+                            <option value="stamina1">Stamina ★☆☆</option>
+                            <option value="stamina2">Stamina ★★☆</option>
+                            <option value="stamina3" selected>Stamina ★★★</option>
+                            <option value="power1">Power ★☆☆</option>
+                            <option value="power2">Power ★★☆</option>
+                            <option value="power3">Power ★★★</option>
+                            <option value="guts1">Guts ★☆☆</option>
+                            <option value="guts2">Guts ★★☆</option>
+                            <option value="guts3">Guts ★★★</option>
+                            <option value="wit1">Wit ★☆☆</option>
+                            <option value="wit2">Wit ★★☆</option>
+                            <option value="wit3">Wit ★★★</option>
+                        </select>
                         <br>
-                        Wit 1, 2, 3
-                        <input type="number" id="witSparks1" class="smallNumber" value="0"> <input type="number" id="witSparks2" class="smallNumber" value="0"> <input type="number" id="witSparks3" class="smallNumber" value="0">
+                        Grandparent 2a
+                        <select id="grandparentSpark2a" class="grandparentSpark" value="stamina3">
+                            <option value="speed1">Speed ★☆☆</option>
+                            <option value="speed2">Speed ★★☆</option>
+                            <option value="speed3">Speed ★★★</option>
+                            <option value="stamina1">Stamina ★☆☆</option>
+                            <option value="stamina2">Stamina ★★☆</option>
+                            <option value="stamina3" selected>Stamina ★★★</option>
+                            <option value="power1">Power ★☆☆</option>
+                            <option value="power2">Power ★★☆</option>
+                            <option value="power3">Power ★★★</option>
+                            <option value="guts1">Guts ★☆☆</option>
+                            <option value="guts2">Guts ★★☆</option>
+                            <option value="guts3">Guts ★★★</option>
+                            <option value="wit1">Wit ★☆☆</option>
+                            <option value="wit2">Wit ★★☆</option>
+                            <option value="wit3">Wit ★★★</option>
+                        </select>
+                        <br>
+                        Grandparent 2b
+                        <select id="grandparentSpark2b" class="grandparentSpark" value="stamina3">
+                            <option value="speed1">Speed ★☆☆</option>
+                            <option value="speed2">Speed ★★☆</option>
+                            <option value="speed3">Speed ★★★</option>
+                            <option value="stamina1">Stamina ★☆☆</option>
+                            <option value="stamina2">Stamina ★★☆</option>
+                            <option value="stamina3" selected>Stamina ★★★</option>
+                            <option value="power1">Power ★☆☆</option>
+                            <option value="power2">Power ★★☆</option>
+                            <option value="power3">Power ★★★</option>
+                            <option value="guts1">Guts ★☆☆</option>
+                            <option value="guts2">Guts ★★☆</option>
+                            <option value="guts3">Guts ★★★</option>
+                            <option value="wit1">Wit ★☆☆</option>
+                            <option value="wit2">Wit ★★☆</option>
+                            <option value="wit3">Wit ★★★</option>
+                        </select>
                     </div>
                 </div>
                 <div class="option">
                     <div class="subtitle">Simulated Runs</div>
                     <div>
-                        <input type="number" id="simulatedRuns" class="bigNumber" value="200">
+                        <input type="number" id="simulatedRuns" class="bigNumber" value="100">
                     </div>
                     <div class="subtitle">Show Percentile</div>
                     <div>
-                        <input type="number" id="showPercentile" class="bigNumber" value="75">
+                        <input type="number" id="showPercentile" class="bigNumber" value="90">
                     </div>
                 </div>
             </div>
