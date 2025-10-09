@@ -1,4 +1,4 @@
-import { SupportCard, SupportCardEffectType, SupportCardType } from "./supportCard";
+import { SupportCard, SupportCardEffectType, SupportCardEvent, SupportCardEventResult, SupportCardType } from "./supportCard";
 
 import trainingData from "./data/trainingData.json";
 import { Parent } from "./parent";
@@ -11,12 +11,21 @@ export class GameState {
     maxEnergy: number = 100;
     mood: number = 2;
 
+    speedCap = 1200;
+    staminaCap = 1200;
+    powerCap = 1200;
+    gutsCap = 1200;
+    witCap = 1200;
+
     speed = 100;
     stamina = 100;
     power = 100;
     guts = 100;
     wit = 100;
+
     skillPoints = 0;
+    skillHints: string[] = [];
+    statuses: string[] = [];
 
     objectiveRaces: number[] = [11, 22, 28, 41, 52, 59, 66, 67, 73, 75, 77];
     raceBonus = 0;
@@ -34,6 +43,9 @@ export class GameState {
 
     sparksParent: Parent[] = [];
     sparksGrandparent: Parent[] = [];
+
+    cardChainEventProgress: number[] = [0, 0, 0, 0, 0, 0];
+    cardEvents: {event: SupportCardEvent, cardId: number}[] = [];
 
     cardLevels: number[] = [50, 50, 50, 50, 50, 50];
     cards: SupportCard[] = [];
@@ -127,20 +139,20 @@ export class GameState {
         effect.power = Math.floor(this.getTrainingResult(base.power, moodEffect, trainingEffect, friendshipBonus, numCards)*(1+this.powerGrowth));
         effect.guts = Math.floor(this.getTrainingResult(base.guts, moodEffect, trainingEffect, friendshipBonus, numCards)*(1+this.gutsGrowth));
         effect.wit = Math.floor(this.getTrainingResult(base.wit, moodEffect, trainingEffect, friendshipBonus, numCards)*(1+this.witGrowth));
-        if (effect.speed+this.speed > 1200) {
-            effect.speed = 1200-this.speed;
+        if (effect.speed+this.speed > this.speedCap) {
+            effect.speed = this.speedCap-this.speed;
         }
-        if (effect.stamina+this.stamina > 1200) {
-            effect.stamina = 1200-this.stamina;
+        if (effect.stamina+this.stamina > this.staminaCap) {
+            effect.stamina = this.staminaCap-this.stamina;
         }
-        if (effect.power+this.power > 1200) {
-            effect.power = 1200-this.power;
+        if (effect.power+this.power > this.powerCap) {
+            effect.power = this.powerCap-this.power;
         }
-        if (effect.guts+this.guts > 1200) {
-            effect.guts = 1200-this.guts;
+        if (effect.guts+this.guts > this.gutsCap) {
+            effect.guts = this.gutsCap-this.guts;
         }
-        if (effect.wit+this.wit > 1200) {
-            effect.wit = 1200-this.wit;
+        if (effect.wit+this.wit > this.witCap) {
+            effect.wit = this.witCap-this.wit;
         }
         effect.energy = base.energy*(1-energyCostReduction);
         effect.failureChance = this.getFailureChance(effect.energy, facility)*(1-failureProtection);
@@ -158,6 +170,9 @@ export class GameState {
             this.guts += card.getEffectStrengthAtLevel(this.cardLevels[i], SupportCardEffectType.InitialGuts);
             this.wit += card.getEffectStrengthAtLevel(this.cardLevels[i], SupportCardEffectType.InitialWit);
             this.raceBonus += card.getEffectStrengthAtLevel(this.cardLevels[i], SupportCardEffectType.RaceBonus)*0.01;
+            for (let j = 0; j < card.RandomEvents.length; j++) {
+                this.cardEvents.push({event: card.RandomEvents[j], cardId: i});
+            }
         }
         for (let i = 0; i < this.sparksParent.length; i++) {
             this.doGainStat(this.sparksParent[i].sparkLevel == 1 ? 5 : (this.sparksParent[i].sparkLevel == 2 ? 12 : 21), this.sparksParent[i].sparkAttribute);
@@ -217,6 +232,58 @@ export class GameState {
                 this.doGainAllStats(5);
             }
         }
+        if (!this.getIsSummerCamp() && this.turn < 72) {
+            let random = Math.random()*100;
+            //todo: chain events
+            if (random < 33 && this.cardEvents.length > 0) {
+                const selectedEventId = Math.floor(Math.random() * this.cardEvents.length);
+                const selectedEvent = this.cardEvents[selectedEventId];
+                this.doSupportCardEvent(selectedEvent.event, selectedEvent.cardId);
+                this.cardEvents.splice(selectedEventId, 1);
+            }
+        }
+    }
+
+    doSupportCardEvent(event: SupportCardEvent, cardId: number) {
+        let bestChoice = -1;
+        let bestChoiceScore = -100000;
+        for (let i = 0; i < event.choices.length; i++) {
+            const choice = event.choices[i];
+            let score = 0;
+            for (let j = 0; j < choice.length; j++) {
+                score += choice[j].getScore(this);
+            }
+            //score /= choice.length;
+            if (score > bestChoiceScore) {
+                bestChoice = i;
+                bestChoiceScore = score;
+            }
+        }
+        let random = Math.random()*100;
+        let total = 0;
+        for (let i = 0; i < event.choices[bestChoice].length; i++) {
+            if (total+event.choices[bestChoice][i].probability > random) {
+                this.doSupportCardEventResult(event.choices[bestChoice][i], cardId);
+                return;
+            }
+            total += event.choices[bestChoice][i].probability;
+        }
+    }
+
+    doSupportCardEventResult(eventResult: SupportCardEventResult, cardId: number) {
+        this.doGainMood(eventResult.mood);
+        this.doGainEnergy(eventResult.energy);
+        this.doGainBond(eventResult.bond, cardId);
+        this.doGainStat(eventResult.speed, 0);
+        this.doGainStat(eventResult.stamina, 1);
+        this.doGainStat(eventResult.power, 2);
+        this.doGainStat(eventResult.guts, 3);
+        this.doGainStat(eventResult.wit, 4);
+        this.skillPoints += eventResult.skillPoints;
+        this.skillHints.push(...eventResult.skillHints);
+        if (eventResult.status != "") {
+            this.doGainStatus(eventResult.status);
+        }
     }
 
     doResults() {
@@ -226,24 +293,24 @@ export class GameState {
     }
 
     doGainAllStats(amount: number) {
-        this.speed = Math.min(this.speed + amount, 1200);
-        this.stamina = Math.min(this.stamina + amount, 1200);
-        this.power = Math.min(this.power + amount, 1200);
-        this.guts = Math.min(this.guts + amount, 1200);
-        this.wit = Math.min(this.wit + amount, 1200);
+        this.speed = Math.min(this.speed + amount, this.speedCap);
+        this.stamina = Math.min(this.stamina + amount, this.staminaCap);
+        this.power = Math.min(this.power + amount, this.powerCap);
+        this.guts = Math.min(this.guts + amount, this.gutsCap);
+        this.wit = Math.min(this.wit + amount, this.witCap);
     }
 
     doGainStat(amount: number, id: number) {
         if (id == 0) {
-            this.speed = Math.min(this.speed + amount, 1200);
+            this.speed = Math.min(this.speed + amount, this.speedCap);
         } else if (id == 1) {
-            this.stamina = Math.min(this.stamina + amount, 1200);
+            this.stamina = Math.min(this.stamina + amount, this.staminaCap);
         } else if (id == 2) {
-            this.power = Math.min(this.power + amount, 1200);
+            this.power = Math.min(this.power + amount, this.powerCap);
         } else if (id == 3) {
-            this.guts = Math.min(this.guts + amount, 1200);
+            this.guts = Math.min(this.guts + amount, this.gutsCap);
         } else if (id == 4) {
-            this.wit = Math.min(this.wit + amount, 1200);
+            this.wit = Math.min(this.wit + amount, this.witCap);
         }
     }
 
@@ -253,6 +320,18 @@ export class GameState {
 
     doGainMood(amount: number) {
         this.mood = Math.max(Math.min(this.mood + amount, 2), -2);
+    }
+
+    doGainBond(amount: number, id: number) {
+        this.cardBonds[id] += amount;
+    }
+
+    doGainStatus(status: string) {
+        if (status == "Maximum Energy +4") {
+            this.maxEnergy += 4;
+        } else {
+            this.statuses.push(status);
+        }
     }
 
     getDaysBeforeSummerCamp() {
@@ -303,12 +382,12 @@ export class GameState {
             this.failedTrainings++;
         }
 
-        this.speed = Math.min(1200, this.speed);
-        this.stamina = Math.min(1200, this.stamina);
-        this.power = Math.min(1200, this.power);
-        this.guts = Math.min(1200, this.guts);
-        this.wit = Math.min(1200, this.wit);
-        this.energy = Math.min(100, Math.max(0, this.energy));
+        this.speed = Math.min(this.speedCap, this.speed);
+        this.stamina = Math.min(this.staminaCap, this.stamina);
+        this.power = Math.min(this.powerCap, this.power);
+        this.guts = Math.min(this.gutsCap, this.guts);
+        this.wit = Math.min(this.witCap, this.wit);
+        this.energy = Math.min(this.maxEnergy, Math.max(0, this.energy));
         
         for (let i = 0; i < this.cards.length; i++) {
             if (this.cardPositions[i] == id) {
@@ -347,6 +426,33 @@ export class GameState {
             } else {
                 this.doGainEnergy(30);
                 this.sleepDeprived++;
+            }
+        }
+        this.doEndTurn();
+    }
+
+    doRecreation() {
+        if (this.getIsSummerCamp()) {
+            this.doGainEnergy(40);
+            this.doGainMood(1);
+        } else {
+            let random = Math.random()*100;
+            if (random < 70) {
+                this.doGainEnergy(10);
+                this.doGainMood(1);
+            } else if (random < 80) {
+                this.doGainEnergy(20);
+                this.doGainMood(1);
+            } else if (random < 85) {
+                this.doGainEnergy(30);
+                this.doGainMood(1);
+            } else {
+                this.doGainMood(2);
+            }
+            let event = Math.random()*100;
+            if (event < 30) {
+                //todo: make this proper
+                this.doGainStat(5, 0);
             }
         }
         this.doEndTurn();

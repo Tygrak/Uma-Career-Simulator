@@ -28,7 +28,7 @@
                 "choices": [
                     [
                         {
-                            "probability": 50,
+                            "probability": 100,
                             "energy": 10,
                             "mood": 1,
                             "bond": 5,
@@ -440,6 +440,718 @@
                             "skillHints": [
                                 "Target in Sight ○ 1"
                             ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Messing Around] Nice Nature",
+        "chainEvents": [
+            {
+                "name": "Chasing Their Backs",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 5,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 3,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 20,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Wind at My Back",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 5,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Long Shot ○ 3"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Not like Meow",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 20,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 5,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "(Delicious) Burden",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Ramp Up 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 1,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Maximum Energy +4"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[A Marvelous \u2606 Plan] Marvelous Sunday",
+        "chainEvents": [
+            {
+                "name": "Marvelous World Plan ☆",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 5,
+                            "wit": 5,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Marvelously Marvelous ☆",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 15,
+                            "wit": 15,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Marvelous, No Question ☆",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 1,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "How To Be More Marvelous ☆",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 1,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Hanshin Racecourse ○ 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Urara\u0027s Day Off!] Haru Urara",
+        "chainEvents": [
+            {
+                "name": "Trying Hard with Rice!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Trying Hard with King!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 1,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Trying Hard with Everyone's Support!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 15,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Unruffled 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Urara's ☆ Study Review",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 5,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 1,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 5,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Urara's ☆ Long Shot Dash!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Long Shot ○ 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 1,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Piece of Mind] Super Creek",
+        "chainEvents": [
+            {
+                "name": "Freshly Made in Ample Amounts",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 5,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "The Taste of Warmth",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 5,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Have a Second Helping!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 10,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Swinging Maestro 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Leave it to Me to Help Out! ♪",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 15,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 10,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Leave it to Me to Be Considerate! ♪",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Deep Breaths 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 5,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Double Carrot Punch!] Biko Pegasus",
+        "chainEvents": [
+            {
+                "name": "Passionate Promises, Heroic Ambitions!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 5,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Brace Yourself: Training with Carrot Ranger!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 5,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Showdown! Glorious Victory!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 5,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Plan X 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "A Hero's Woes",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 15,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 5,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Preparing My Special Move!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Sprint Straightaways ○ 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 30,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
                             "status": ""
                         }
                     ]

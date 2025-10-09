@@ -113,9 +113,13 @@ export class Simulator {
                 this.log += "turn: " + gameState.turn + "\n";
                 this.log += "state: " + gameState.getStatsString() + " (energy: " + gameState.energy + ")\n";
                 this.log += "pos: " + gameState.cardPositions + "\n";
+
+                let previousEvents = [...gameState.cardEvents];
                 let id = this.ChooseBestTraining(gameState);
                 if (id == -1) {
                     gameState.doRest();
+                } else if (id == -2) {
+                    gameState.doRecreation();
                 } else {
                     gameState.doTraining(id);
                 }
@@ -123,6 +127,10 @@ export class Simulator {
                     this.log += "post-inherit state: " + gameState.getStatsString() + " (turn: " + gameState.turn + ")\n";
                 }
                 this.log += "selected: " + id + "\n";
+
+                if (previousEvents.length != gameState.cardEvents.length) {
+                    this.log += "event: " + previousEvents.filter(e => !gameState.cardEvents.includes(e))[0].event.name + "\n";
+                }
             }
             this.results.push(gameState);
             //console.log(gameState);
@@ -166,6 +174,9 @@ export class Simulator {
                 valueMaxId = i;
                 valueMaxFailure = effect.failureChance;
             }
+        }
+        if (gameState.mood < 2) {
+            return -2;
         }
         if ((gameState.energy < 60 && valueMax < 10) || (gameState.energy < 50 && valueMax < 30) || valueMaxFailure > 30) {
             return -1;

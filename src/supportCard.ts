@@ -1,5 +1,6 @@
 import supportCardsData from "./data/supportCardsData.json";
-import supportCardsEventData from "./data/supportCardEvents.json";
+import supportCardEventData from "./data/supportCardEvents.json";
+import { GameState } from "./gameState";
 
 export enum SupportCardType {
     Speed = 0,
@@ -72,12 +73,21 @@ export class SupportCard {
 
     CardName = '';
 
+    ChainEvents: SupportCardEvent[] = [];
+    RandomEvents: SupportCardEvent[] = [];
+
     static fromJSON(data: any): SupportCard {
         const card = new SupportCard();
         Object.assign(card, data);
         card.SupportCardEffects = (data.SupportCardEffects || []).map(
             (e: any) => SupportCardEffect.fromJSON(e)
         );
+        let eventData = this.getAllEvents().find(e => e.name == card.CardName);
+        if (eventData === undefined) {
+            eventData = SupportCardEventData.getDefaultEventData();
+        }
+        card.ChainEvents = eventData.chainEvents;
+        card.RandomEvents = eventData.events;
         return card;
     }
 
@@ -98,15 +108,23 @@ export class SupportCard {
     }
     
     static allcards: SupportCard[] = [];
-
     static getAllCards(): SupportCard[] {
         if (this.allcards.length == 0) {
             let cardsJson: any[] = supportCardsData;
             let cards = cardsJson.map(c => this.fromJSON(c));
             this.allcards = cards;
-            return cards;
         }
         return this.allcards;
+    }
+    
+    static allevents: SupportCardEventData[] = [];
+    static getAllEvents(): SupportCardEventData[] {
+        if (this.allevents.length == 0) {
+            let json: any[] = supportCardEventData;
+            let events = json.map(e => SupportCardEventData.fromJSON(e));
+            this.allevents = events;
+        }
+        return this.allevents;
     }
 
     toString(): string {
@@ -248,6 +266,40 @@ export class SupportCardEffect {
     }
 }
 
+export class SupportCardEventData {
+    name: string = "";
+    chainEvents: SupportCardEvent[] = [];
+    events: SupportCardEvent[] = [];
+
+    static fromJSON(data: any): SupportCardEventData {
+        const event = new SupportCardEventData();
+        Object.assign(event, data);
+        event.chainEvents = (data.chainEvents || []).map(
+            (e: any) => SupportCardEvent.fromJSON(e)
+        );
+        event.events = (data.events || []).map(
+            (e: any) => SupportCardEvent.fromJSON(e)
+        );
+        return event;
+    }
+
+    static getDefaultEventData(): SupportCardEventData {
+        let data = new SupportCardEventData();
+        data.name = "default";
+        let event = new SupportCardEvent();
+        event.name = "default";
+        let result = new SupportCardEventResult();
+        result.speed = 5;
+        result.bond = 5;
+        event.choices.push([result]);
+        data.chainEvents.push(event);
+        data.chainEvents.push(event);
+        data.events.push(event);
+        data.events.push(event);
+        return data;
+    }
+}
+
 export class SupportCardEvent {
     name: string = "";
     choices: SupportCardEventResult[][] = [];
@@ -274,10 +326,27 @@ export class SupportCardEventResult {
     wit = 0;
     skillPoints = 0;
     skillHints: string[] = []; 
+    status = "";
 
     static fromJSON(data: any): SupportCardEventResult {
         const result = new SupportCardEventResult();
         Object.assign(result, data);
         return result;
+    }
+
+    getScore(gameState: GameState) {
+        let score = 0;
+        score += Math.min(this.energy, gameState.maxEnergy-gameState.energy)*2;
+        score += Math.min(this.mood, 2-gameState.mood)*50;
+        score += Math.min(this.speed, gameState.speedCap-gameState.speed);
+        score += Math.min(this.stamina, gameState.staminaCap-gameState.stamina);
+        score += Math.min(this.power, gameState.powerCap-gameState.power);
+        score += Math.min(this.guts, gameState.gutsCap-gameState.guts);
+        score += Math.min(this.wit, gameState.witCap-gameState.wit);
+        score += this.skillPoints*0.25;
+        score += this.bond*0.25;
+        score += this.skillHints.length*3;
+        score *= this.probability/100;
+        return score;
     }
 }
