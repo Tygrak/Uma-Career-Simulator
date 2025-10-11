@@ -77,13 +77,10 @@ submitButton.onclick = (e) => {
     }
     let percentile = parseInt((document.getElementById("showPercentile") as HTMLInputElement).value);
     let result = simulator.FindOptimalDeck(parseInt((document.getElementById("simulatedRuns") as HTMLInputElement).value), percentile);
-    let percentile74 = simulator.GetResultsPercentile(percentile-1);
-    let percentile75 = simulator.GetResultsPercentile(percentile);
-    let percentile76 = simulator.GetResultsPercentile(percentile+1);
+    
+    let percentile75 = simulator.bestRuns[0];
     console.log(percentile75.gameState);
-    let logText = percentile74.gameState.getStatsString() + ", " + percentile74.gameState.getStatsSum() + ", " + simulator.GetDistFromTargetSum(percentile74.gameState).toFixed(2) + ", " + percentile74.gameState.getTrainingsString() + ", " + "\n";
-    logText += percentile75.gameState.getStatsString() + ", " + percentile75.gameState.getStatsSum() + ", " + simulator.GetDistFromTargetSum(percentile75.gameState).toFixed(2) + ", " + percentile75.gameState.getTrainingsString() + "\n";
-    logText += percentile76.gameState.getStatsString() + ", " + percentile76.gameState.getStatsSum() + ", " + simulator.GetDistFromTargetSum(percentile76.gameState).toFixed(2) + ", " + percentile76.gameState.getTrainingsString() + "\n\n";
+    let logText = percentile75.gameState.getStatsString() + ", " + percentile75.gameState.getStatsSum() + ", " + simulator.GetDistFromTargetSum(percentile75.gameState).toFixed(2) + ", " + percentile75.gameState.getTrainingsString() + "\n";
     logText += percentile75.log;
     logDiv.innerText = result + "\n\n\n" + logText;
 };
@@ -104,7 +101,43 @@ removeCardButton.onclick = (e) => {
 }
 
 cardPresetsSelect.onchange = (e) => {
-    if (cardPresetsSelect.value == "allSSR") {
+    if (cardPresetsSelect.value == "mileCM") {
+        cardSelects[0].value = "[Fire at My Heels] Kitasan Black";
+        cardLevels[0].value = "50";
+        cardSelects[1].value = "[First-Rate Plan] King Halo";
+        cardLevels[1].value = "45";
+        cardSelects[2].value = "[5:00 a.m.\u2014Right on Schedule] Eishin Flash";
+        cardLevels[2].value = "45";
+        cardSelects[3].value = "[Messing Around] Nice Nature";
+        cardLevels[3].value = "45";
+        cardSelects[4].value = "[A Marvelous \u2606 Plan] Marvelous Sunday";
+        cardLevels[4].value = "45";
+        cardSelects[5].value = "Empty";
+        cardLevels[5].value = "50";
+        (document.getElementById("speedTarget") as HTMLInputElement).value = "1150";
+        (document.getElementById("staminaTarget") as HTMLInputElement).value = "550";
+        (document.getElementById("powerTarget") as HTMLInputElement).value = "800";
+        (document.getElementById("gutsTarget") as HTMLInputElement).value = "0";
+        (document.getElementById("witTarget") as HTMLInputElement).value = "800";
+    } else if (cardPresetsSelect.value == "mediumCM") {
+        cardSelects[0].value = "[Fire at My Heels] Kitasan Black";
+        cardLevels[0].value = "50";
+        cardSelects[1].value = "[Two Pieces] Narita Brian";
+        cardLevels[1].value = "50";
+        cardSelects[2].value = "[5:00 a.m.\u2014Right on Schedule] Eishin Flash";
+        cardLevels[2].value = "45";
+        cardSelects[3].value = "[Piece of Mind] Super Creek";
+        cardLevels[3].value = "35";
+        cardSelects[4].value = "[Cute \u002B Cute = ?] Mayano Top Gun";
+        cardLevels[4].value = "45";
+        cardSelects[5].value = "Empty";
+        cardLevels[5].value = "50";
+        (document.getElementById("speedTarget") as HTMLInputElement).value = "1150";
+        (document.getElementById("staminaTarget") as HTMLInputElement).value = "1000";
+        (document.getElementById("powerTarget") as HTMLInputElement).value = "500";
+        (document.getElementById("gutsTarget") as HTMLInputElement).value = "0";
+        (document.getElementById("witTarget") as HTMLInputElement).value = "0";
+    } else if (cardPresetsSelect.value == "allSSR") {
         ClearAvailableCards();
         let ssrs = SupportCard.getAllCards().filter(c => c.Rarity == 3);
         for (let i = 0; i < ssrs.length; i++) {

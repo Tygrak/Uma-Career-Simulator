@@ -52,10 +52,11 @@ export class GameState {
     cards: SupportCard[] = [];
     cardPositions: number[] = [-1, -1, -1, -1, -1, -1];
     cardBonds: number[] = [0, 0, 0, 0, 0, 0];
+    cardHints: number[] = [0, 0, 0, 0, 0, 0];
 
     trainings: TrainingFacility[] = [new TrainingFacility(trainingData[0]), new TrainingFacility(trainingData[1]), new TrainingFacility(trainingData[2]), new TrainingFacility(trainingData[3]), new TrainingFacility(trainingData[4])];
 
-    getCardPositions() {
+    doCardPositions() {
         for (let i = 0; i < this.cards.length; i++) {
             const card = this.cards[i];
             const level = this.cardLevels[i];
@@ -86,6 +87,21 @@ export class GameState {
                 total += weights[j];
             }
             this.cardPositions[i] = pos;
+        }
+    }
+
+    doCardHints() {
+        for (let i = 0; i < this.cards.length; i++) {
+            const card = this.cards[i];
+            const level = this.cardLevels[i];
+            let random = Math.random()*100;
+            let frequency = card.getEffectStrengthAtLevel(level, SupportCardEffectType.HintFrequency);
+            let chance = 7.5*(1+frequency*0.01);
+            if (random < chance) {
+                this.cardHints[i] = 1;
+            } else {
+                this.cardHints[i] = 0;
+            }
         }
     }
 
@@ -155,7 +171,10 @@ export class GameState {
         if (effect.wit+this.wit > this.witCap) {
             effect.wit = this.witCap-this.wit;
         }
-        effect.energy = base.energy*(1-energyCostReduction);
+        effect.energy = base.energy;
+        if (effect.energy < 0) {
+            effect.energy = Math.floor(effect.energy*(1-energyCostReduction));
+        }
         effect.failureChance = this.getFailureChance(effect.energy, facility)*(1-failureProtection);
         effect.skillPoints = 2+skillPointBonus;
         return effect;
@@ -205,7 +224,8 @@ export class GameState {
             this.doResults();
         }
         this.doEvent();
-        this.getCardPositions();
+        this.doCardPositions();
+        this.doCardHints();
     }
 
     doRace() {
@@ -299,6 +319,9 @@ export class GameState {
         this.skillPoints += eventResult.skillPoints;
         this.skillHints.push(...eventResult.skillHints);
         if (eventResult.status != "") {
+            if (eventResult.status == "Event chain ended") {
+                this.cardChainEventProgress[cardId] = 3;
+            }
             this.doGainStatus(eventResult.status);
         }
     }
@@ -340,7 +363,7 @@ export class GameState {
     }
 
     doGainBond(amount: number, id: number) {
-        this.cardBonds[id] += amount;
+        this.cardBonds[id] = Math.min(this.cardBonds[id] + amount, 100);
     }
 
     doGainStatus(status: string) {
@@ -409,7 +432,13 @@ export class GameState {
         for (let i = 0; i < this.cards.length; i++) {
             if (this.cardPositions[i] == id) {
                 //training gives +7, with charming +9, hints +5
-                this.cardBonds[i] += 7;
+                this.doGainBond(7, i);
+                if (this.statuses.includes("Charming ○")) {
+                    this.doGainBond(2, i);
+                }
+                if (this.cardHints[i] == 1) {
+                    this.doGainBond(5, i);
+                }
             }
         }
 
@@ -494,6 +523,9 @@ export class GameState {
             failureModifier = 320+facility.level*1;
         }
         let baseRate = (this.energy - 100) * (this.energy * 10 - failureModifier) / 400;
+        if (this.statuses.includes("Practice Perfect ○")) {
+            baseRate -= 2;
+        }
         return Math.min(Math.max(baseRate, 0), 100);
     }
 

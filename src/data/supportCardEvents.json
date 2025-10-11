@@ -2989,6 +2989,782 @@
         ]
     },
     {
+        "name": "[Even the Littlest Bud] Nishino Flower",
+        "chainEvents": [
+            {
+                "name": "How I Can Help",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 10,
+                            "skillHints": [],
+                            "status": "Maximum Energy +4"
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Aspiring to Adulthood",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 20,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 5,
+                            "skillPoints": 15,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "What's Important!",
+                "choices": [
+                    [
+                        {
+                            "probability": 33,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 10,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Beeline Burst 1"
+                            ],
+                            "status": ""
+                        },
+                        {
+                            "probability": 33,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 10,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Beeline Burst 3"
+                            ],
+                            "status": ""
+                        },
+                        {
+                            "probability": 34,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 10,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Straightaway Adept 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Warmth, Love, and Lunch",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Charming ○"
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 20,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Let's Bloom Beautifully ♪",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 15,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 10,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Split the Sky, White Lightning!] Tamamo Cross",
+        "chainEvents": [
+            {
+                "name": "Beef, Pork, Chicken, Curry!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 5,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Got My Priorities Straight",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 5,
+                            "power": 5,
+                            "guts": 5,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "My Flaws Make Me Who I Am!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 5,
+                            "power": 10,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Fast & Furious 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Tamamo's School Tour",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 10,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 5,
+                            "power": 0,
+                            "guts": 5,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "A Battle I Can't Lose!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Calm in a Crowd 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 5,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 5,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Future SSR Matikanefukukitaru] Matikanefukukitaru",
+        "chainEvents": [
+            {
+                "name": "Test Your Luck with the Mysterious Ritual Diagram!",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 7,
+                            "speed": 7,
+                            "stamina": 7,
+                            "power": 7,
+                            "guts": 7,
+                            "wit": 7,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        },
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 4,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Event chain ended"
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 5,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Event chain ended"
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Sharing Laughter and Good Fortune with Friends!",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 7,
+                            "speed": 7,
+                            "stamina": 7,
+                            "power": 7,
+                            "guts": 7,
+                            "wit": 7,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        },
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 4,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Event chain ended"
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 5,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Event chain ended"
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "I've Arrived at a Miracle Happy!",
+                "choices": [
+                    [
+                        {
+                            "probability": 33,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 7,
+                            "speed": 7,
+                            "stamina": 7,
+                            "power": 7,
+                            "guts": 7,
+                            "wit": 7,
+                            "skillPoints": 77,
+                            "skillHints": [
+                                "Super Lucky Seven 3"
+                            ],
+                            "status": ""
+                        },
+                        {
+                            "probability": 33,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 7,
+                            "speed": 7,
+                            "stamina": 7,
+                            "power": 7,
+                            "guts": 7,
+                            "wit": 7,
+                            "skillPoints": 7,
+                            "skillHints": [
+                                "Super Lucky Seven 1"
+                            ],
+                            "status": ""
+                        },
+                        {
+                            "probability": 34,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 7,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 7,
+                            "skillHints": [
+                                "Lucky Seven 3"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Full-Power Spirituality",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 5,
+                            "skillPoints": 15,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 5,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "When Faith and Kindness Intersect――",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 30,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 20,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Future SSR Admire Vega] Admire Vega",
+        "chainEvents": [
+            {
+                "name": "Ayabe-san Won't Overlook It",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 15,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Flustered Pace Chasers 2"
+                            ],
+                            "status": ""
+                        },
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 10,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 15,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Ayabe-san Won't Yield",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 7,
+                            "guts": 0,
+                            "wit": 7,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Ayabe-san Won't Falter",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 15,
+                            "guts": 0,
+                            "wit": 10,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Daring Attack 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 15,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 30,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Awkward Triangram",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 15,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Lone Cepheus",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Subdued Pace Chasers 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 10,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
         "name": "[blank] blank",
         "chainEvents": [],
         "events": []
