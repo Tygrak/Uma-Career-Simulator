@@ -40,6 +40,7 @@ export class GameState {
     wellRested = 0;
     allRefreshed = 0;
     sleepDeprived = 0;
+    lastEvent: SupportCardEvent | null = null;
 
     sparksParent: Parent[] = [];
     sparksGrandparent: Parent[] = [];
@@ -134,11 +135,11 @@ export class GameState {
             }
         }
         let effect = new TrainingEffect();
-        effect.speed = Math.floor(this.getTrainingResult(base.speed, moodEffect, trainingEffect, friendshipBonus, numCards)*(1+this.speedGrowth));
-        effect.stamina = Math.floor(this.getTrainingResult(base.stamina, moodEffect, trainingEffect, friendshipBonus, numCards)*(1+this.staminaGrowth));
-        effect.power = Math.floor(this.getTrainingResult(base.power, moodEffect, trainingEffect, friendshipBonus, numCards)*(1+this.powerGrowth));
-        effect.guts = Math.floor(this.getTrainingResult(base.guts, moodEffect, trainingEffect, friendshipBonus, numCards)*(1+this.gutsGrowth));
-        effect.wit = Math.floor(this.getTrainingResult(base.wit, moodEffect, trainingEffect, friendshipBonus, numCards)*(1+this.witGrowth));
+        effect.speed = Math.floor(this.getTrainingResult(base.speed, moodEffect, trainingEffect, friendshipBonus, numCards, this.speedGrowth));
+        effect.stamina = Math.floor(this.getTrainingResult(base.stamina, moodEffect, trainingEffect, friendshipBonus, numCards, this.staminaGrowth));
+        effect.power = Math.floor(this.getTrainingResult(base.power, moodEffect, trainingEffect, friendshipBonus, numCards, this.powerGrowth));
+        effect.guts = Math.floor(this.getTrainingResult(base.guts, moodEffect, trainingEffect, friendshipBonus, numCards, this.gutsGrowth));
+        effect.wit = Math.floor(this.getTrainingResult(base.wit, moodEffect, trainingEffect, friendshipBonus, numCards, this.witGrowth));
         if (effect.speed+this.speed > this.speedCap) {
             effect.speed = this.speedCap-this.speed;
         }
@@ -235,16 +236,32 @@ export class GameState {
         if (!this.getIsSummerCamp() && this.turn < 72) {
             let random = Math.random()*100;
             //todo: chain events
+            let chainEvents = [];
+            for (let i = 0; i < this.cards.length; i++) {
+                if (this.cards[i].Rarity > 1 && this.cards[i].ChainEvents.length > this.cardChainEventProgress[i]) {
+                    chainEvents.push(i);
+                }
+            }
             if (random < 33 && this.cardEvents.length > 0) {
-                const selectedEventId = Math.floor(Math.random() * this.cardEvents.length);
-                const selectedEvent = this.cardEvents[selectedEventId];
-                this.doSupportCardEvent(selectedEvent.event, selectedEvent.cardId);
-                this.cardEvents.splice(selectedEventId, 1);
+                random = Math.random()*100;
+                if (chainEvents.length > 0 && random < 60) {
+                    const selectedEventId = Math.floor(Math.random() * chainEvents.length);
+                    const selectedCard = chainEvents[selectedEventId];
+                    const selectedEvent = this.cards[selectedCard].ChainEvents[this.cardChainEventProgress[selectedCard]];
+                    this.doSupportCardEvent(selectedEvent, selectedCard);
+                    this.cardChainEventProgress[selectedCard]++;
+                } else {
+                    const selectedEventId = Math.floor(Math.random() * this.cardEvents.length);
+                    const selectedEvent = this.cardEvents[selectedEventId];
+                    this.doSupportCardEvent(selectedEvent.event, selectedEvent.cardId);
+                    this.cardEvents.splice(selectedEventId, 1);
+                }
             }
         }
     }
 
     doSupportCardEvent(event: SupportCardEvent, cardId: number) {
+        this.lastEvent = event;
         let bestChoice = -1;
         let bestChoiceScore = -100000;
         for (let i = 0; i < event.choices.length; i++) {
@@ -458,8 +475,8 @@ export class GameState {
         this.doEndTurn();
     }
 
-    getTrainingResult(base: number, moodEffect: number, trainingEffect: number, friendshipBonus: number, numCards: number) {
-        return base * (1 + this.mood * 0.1 * moodEffect) * trainingEffect * friendshipBonus * (1 + 0.05 * numCards);
+    getTrainingResult(base: number, moodEffect: number, trainingEffect: number, friendshipBonus: number, numCards: number, growthBonus: number) {
+        return base * (1 + this.mood * 0.1 * moodEffect) * trainingEffect * friendshipBonus * (1 + 0.05 * numCards) * (1+growthBonus);
     }
 
     //thanks to Transparent Dino

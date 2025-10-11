@@ -8,6 +8,9 @@ export function testTrainings() {
     testTraining3();
     testTraining4();
     testTraining5();
+    testTraining6();
+    testTraining7();
+    testTraining8();
 }
 
 function testfailure() {
@@ -15,7 +18,12 @@ function testfailure() {
     for (let i = 0; i < 11; i++) {
         gameState.energy = 50-i*5;
         let effect = gameState.getTrainingEffect(0);
-        console.log(effect.toString());
+        if (gameState.energy > 50) {
+            testEquals(effect.failureChance, 0);
+        } else {
+            testGreater(effect.failureChance, 0);
+        }
+        //console.log(effect.toString());
     }
 }
 
@@ -84,9 +92,72 @@ function testTraining5() {
     testEquals(Math.floor(effect.speed), 7);
 }
 
+//speed lv3 - great, brian 50, +26 speed, +8 power, +3 sp
+function testTraining6() {
+    let gameState = new GameState();
+    gameState.mood = 2;
+    gameState.speedGrowth = 0.1;
+    gameState.powerGrowth = 0.0;
+    gameState.trainings[0].level = 2;
+    gameState.cards.push(SupportCard.getByNameAndRarity("Two Pieces", 3));
+    gameState.cardLevels[0] = 50;
+    gameState.cardPositions[0] = 0;
+    gameState.cardBonds[0] = 100;
+    let effect = gameState.getTrainingEffect(0);
+    testEquals(Math.floor(effect.speed), 26);
+    testEquals(Math.floor(effect.power), 8);
+}
+
+//speed lv3 - great, brian 50, +32 speed, +11 power, +6 sp
+function testTraining7() {
+    let gameState = new GameState();
+    gameState.mood = 2;
+    gameState.speedGrowth = 0.1;
+    gameState.powerGrowth = 0.0;
+    gameState.trainings[0].level = 2;
+    gameState.cards.push(SupportCard.getByNameAndRarity("Silence Suzuka", 1));
+    gameState.cards.push(SupportCard.getByNameAndRarity("Even the Littlest Bud", 3));
+    gameState.cardLevels[0] = 40;
+    gameState.cardLevels[1] = 40;
+    gameState.cardPositions[0] = 0;
+    gameState.cardPositions[1] = 0;
+    gameState.cardBonds[0] = 100;
+    gameState.cardBonds[1] = 100;
+    let effect = gameState.getTrainingEffect(0);
+    testEquals(Math.floor(effect.speed), 32);
+    testEquals(Math.floor(effect.power), 11);
+}
+
+//speed lv3 - great, brian 50, +34 speed, +11 power, +6 sp
+function testTraining8() {
+    let gameState = new GameState();
+    gameState.mood = 2;
+    gameState.speedGrowth = 0.1;
+    gameState.powerGrowth = 0.0;
+    gameState.trainings[0].level = 2;
+    gameState.cards.push(SupportCard.getByNameAndRarity("Silence Suzuka", 1));
+    gameState.cards.push(SupportCard.getByNameAndRarity("Two Pieces", 3));
+    gameState.cardLevels[0] = 40;
+    gameState.cardLevels[1] = 50;
+    gameState.cardPositions[0] = 0;
+    gameState.cardPositions[1] = 0;
+    gameState.cardBonds[0] = 100;
+    gameState.cardBonds[1] = 100;
+    let effect = gameState.getTrainingEffect(0);
+    testEquals(Math.floor(effect.speed), 34);
+    testEquals(Math.floor(effect.power), 11);
+}
+
 function testEquals(a: any, b: any) {
     if (a != b) {
         console.warn("test failed: " + a + " != " + b);
         throw new Error("test failed: " + a + " != " + b);
+    }
+}
+
+function testGreater(a: any, b: any) {
+    if (a <= b) {
+        console.warn("test failed: " + a + " <= " + b);
+        throw new Error("test failed: " + a + " <= " + b);
     }
 }

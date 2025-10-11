@@ -114,7 +114,7 @@ export class Simulator {
                 this.log += "state: " + gameState.getStatsString() + " (energy: " + gameState.energy + ")\n";
                 this.log += "pos: " + gameState.cardPositions + "\n";
 
-                let previousEvents = [...gameState.cardEvents];
+                let previousEvent = gameState.lastEvent;
                 let id = this.ChooseBestTraining(gameState);
                 if (id == -1) {
                     gameState.doRest();
@@ -128,8 +128,8 @@ export class Simulator {
                 }
                 this.log += "selected: " + id + "\n";
 
-                if (previousEvents.length != gameState.cardEvents.length) {
-                    this.log += "event: " + previousEvents.filter(e => !gameState.cardEvents.includes(e))[0].event.name + "\n";
+                if (previousEvent != gameState.lastEvent) {
+                    this.log += "event: " + gameState.lastEvent!.name + "\n";
                 }
             }
             this.results.push(gameState);

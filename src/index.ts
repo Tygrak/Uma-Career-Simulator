@@ -35,13 +35,21 @@ submitButton.onclick = (e) => {
     let cards = cardjsons.map(c => SupportCard.fromJSON(c));
     let levels = levelStrings.map(l => parseInt(l));
     console.log(cards);
-    console.log(cards[0].getEffectStrengthAtLevel(levels[0], SupportCardEffectType.TrainingEffectiveness));
+    for (let i = 0; i < cards.length; i++) {
+        if (cards[i].ChainEvents[0].name == "default") {
+            console.warn(cards[i].CardName + " doesn't have event data ready. Using default placeholder events.");
+        }
+    }
     
     let availableCards = [];
     let availableLevels = [];
     for (let i = 0; i < availableCardSelects.length; i++) {
-        availableCards.push(SupportCard.fromJSON(SupportCard.getAllCards().find(c => c.CardName == availableCardSelects[i].value)));
+        let card = SupportCard.fromJSON(SupportCard.getAllCards().find(c => c.CardName == availableCardSelects[i].value));
+        availableCards.push(card);
         availableLevels.push(parseInt(availableCardLevels[i].value));
+        if (card.ChainEvents[0].name == "default") {
+            console.warn(card.CardName + " doesn't have event data ready. Using default placeholder events.");
+        }
     }
 
     let simulator = new Simulator();

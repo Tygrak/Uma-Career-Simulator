@@ -1160,6 +1160,1835 @@
         ]
     },
     {
+        "name": "[Experimental Studies on Subject A] Agnes Tachyon",
+        "chainEvents": [
+            {
+                "name": "Report: Potential of Specialized Training",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 5,
+                            "skillPoints": 15,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Report: N/A (On Break)",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 10,
+                            "skillPoints": 15,
+                            "skillHints": [
+                                "Subdued Front Runners 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "The Correlation between Sleep and Efficiency",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 5,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 10,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Happenstance Introduced Through Intervention",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Late Surger Savvy ○ 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 10,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Cute \u002B Cute = ?] Mayano Top Gun",
+        "chainEvents": [
+            {
+                "name": "Still Taxiing?",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 30,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Take Off toward Trendy ♪",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 10,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 15,
+                            "skillHints": [
+                                "Focus 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Snack Advice for Mayano!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 5,
+                            "power": 0,
+                            "guts": 5,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 10,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Fashion Advice for Mayano!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Straightaway Adept 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 10,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Lamplit Training of a Witch-to-Be] Sweep Tosho",
+        "chainEvents": [
+            {
+                "name": "Some Very Green Friends",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 10,
+                            "skillHints": [
+                                "Lucky Seven 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": -1,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Maverick ○ 5"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Premeditated Mischief",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 10,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 20,
+                            "skillHints": [
+                                "Levelheaded 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": -1,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Lone Wolf 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Miracle ☆ Escape!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 20,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Wonderful ☆ Mistake!",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": -15,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 40,
+                            "skillHints": [],
+                            "status": ""
+                        },
+                        {
+                            "probability": 50,
+                            "energy": -20,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 40,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Charming ○"
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Watch My Star Fly!] Ines Fujin",
+        "chainEvents": [
+            {
+                "name": "The Power of a Big Sister",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 5,
+                            "stamina": 5,
+                            "power": 0,
+                            "guts": 10,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Take a Step",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 10,
+                            "wit": 0,
+                            "skillPoints": 30,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Aim for That Sparkling Moment!",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 10,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Moxie 1"
+                            ],
+                            "status": ""
+                        },
+                        {
+                            "probability": 50,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 20,
+                            "wit": 5,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Restless 3"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "It's a Game of Tag!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Fast-Paced 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Ten Minutes Left!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 15,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 15,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Fiery Discipline] Yaeno Muteki",
+        "chainEvents": [
+            {
+                "name": "Yaeno's Off-Site Training",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 10,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "A Reasonable Diet vs. an Explosive Diet",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 10,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 10,
+                            "skillPoints": 10,
+                            "skillHints": [
+                                "Playtime's Over! 3"
+                            ],
+                            "status": "Event chain ended"
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Yaeno Muteki's Love Song Nightmare",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "It's On! 1"
+                            ],
+                            "status": ""
+                        },
+                        {
+                            "probability": 50,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 5,
+                            "stamina": 5,
+                            "power": 10,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "It's On! 3"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Firm and Plain, Yet Close to Virtue",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 10,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 1,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "The Will to Protect!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 10,
+                            "power": 10,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Medium Corners ○ 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Two Pieces] Narita Brian",
+        "chainEvents": [
+            {
+                "name": "Brian, the Race Planner",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Maximum Energy +4"
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Only a Sister Knows",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 20,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Running for the Dream",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 20,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Shatterproof 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Student Council Member!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 1,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Maximum Energy +4"
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Lone Wolf",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 3,
+                            "stamina": 3,
+                            "power": 3,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Lone Wolf 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[That Time I Became the Strongest] Gold Ship",
+        "chainEvents": [
+            {
+                "name": "Raising the Uma Lord's Castle",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Maximum Energy +4"
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 10,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Plotting the Uma Lord's Dungeon",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": -15,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 5,
+                            "stamina": 5,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Long Straightaways ○ 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Assembling the Uma Lord's Minions",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 5,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Inside Scoop 3"
+                            ],
+                            "status": ""
+                        },
+                        {
+                            "probability": 50,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 10,
+                            "stamina": 10,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Innate Experience 3"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Maverick ○ 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Adventurer Gold Ship",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 15,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 10,
+                            "wit": 0,
+                            "skillPoints": 15,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Revive the Brand! Golshi's Yakisoba",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 1,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 5,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Hanshin Racecourse ○ 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Wave of Gratitude] Fine Motion",
+        "chainEvents": [
+            {
+                "name": "Lovely Training Weather ♪",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 5,
+                            "skillPoints": 20,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 10,
+                            "stamina": 5,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": "Practice Perfect ○"
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Lovely Concert Weather ♪",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 10,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Lovely Racing Weather ♪",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 5,
+                            "wit": 5,
+                            "skillPoints": 15,
+                            "skillHints": [
+                                "Prepared to Pass 1"
+                            ],
+                            "status": ""
+                        },
+                        {
+                            "probability": 50,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 5,
+                            "wit": 10,
+                            "skillPoints": 15,
+                            "skillHints": [
+                                "Speed Star 3"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Wonderful New Shoes",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 5,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 10,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 5,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 20,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Reminiscent Clover",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Corner Adept ○ 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 15,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Just Keep Going] Matikanetannhauser",
+        "chainEvents": [
+            {
+                "name": "Seeking Uniqueness!",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 1,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 50,
+                            "energy": 10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        },
+                        {
+                            "probability": 50,
+                            "energy": 30,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Becoming a Prankster",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 10,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Unique Running?",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 10,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 15,
+                            "skillHints": [
+                                "Unruffled 3"
+                            ],
+                            "status": ""
+                        },
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 10,
+                            "skillHints": [
+                                "Calm in a Crowd 3"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Just Your Typical Hard Work!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 10,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 10,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Just A Typical Accident?!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 5,
+                            "power": 0,
+                            "guts": 10,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Subdued Front Runners 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Champion\u0027s Passion] El Condor Pasa",
+        "chainEvents": [
+            {
+                "name": "World Class",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 5,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Uma-me",
+                "choices": [
+                    [
+                        {
+                            "probability": 50,
+                            "energy": 30,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 50,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Stamina to Spare 1"
+                            ],
+                            "status": "Event chain ended"
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Luchadora El!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 10,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Killer Tunes 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "Blazing Fire!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 10,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": -10,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 20,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Secret Notebook!",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 10,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Sunny Days ○ 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
+        "name": "[Wild Rider] Vodka",
+        "chainEvents": [
+            {
+                "name": "Gotta Follow My Heart",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 15,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "A Vow to the Setting Sun",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 15,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Put That on the Record, Okay?",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 0,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 30,
+                            "skillHints": [
+                                "Breath of Fresh Air 1"
+                            ],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ],
+        "events": [
+            {
+                "name": "The Coolest Line",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 10,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 15,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            },
+            {
+                "name": "Enemies on Main Street",
+                "choices": [
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 0,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 0,
+                            "skillHints": [
+                                "Nimble Navigator 1"
+                            ],
+                            "status": ""
+                        }
+                    ],
+                    [
+                        {
+                            "probability": 100,
+                            "energy": 0,
+                            "mood": 0,
+                            "bond": 5,
+                            "speed": 0,
+                            "stamina": 0,
+                            "power": 5,
+                            "guts": 0,
+                            "wit": 0,
+                            "skillPoints": 15,
+                            "skillHints": [],
+                            "status": ""
+                        }
+                    ]
+                ]
+            }
+        ]
+    },
+    {
         "name": "[blank] blank",
         "chainEvents": [],
         "events": []
