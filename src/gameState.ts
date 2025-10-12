@@ -420,6 +420,9 @@ export class GameState {
             this.skillPoints += effect.skillPoints;
         } else {
             this.failedTrainings++;
+            if (id == 4) {
+                this.energy += 5;
+            }
         }
 
         this.speed = Math.min(this.speedCap, this.speed);

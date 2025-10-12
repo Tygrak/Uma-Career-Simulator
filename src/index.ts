@@ -19,6 +19,7 @@ const cardLevels = document.getElementsByClassName("fixedLevel") as HTMLCollecti
 let availableCardBrs: HTMLBRElement[] = [];
 let availableCardSelects: HTMLSelectElement[] = [];
 let availableCardLevels: HTMLInputElement[] = [];
+let availableCardButtons: HTMLButtonElement[] = [];
 
 submitButton.onclick = (e) => {
     console.log("Run");
@@ -134,12 +135,54 @@ cardPresetsSelect.onchange = (e) => {
         cardLevels[5].value = "50";
         (document.getElementById("speedTarget") as HTMLInputElement).value = "1150";
         (document.getElementById("staminaTarget") as HTMLInputElement).value = "1000";
-        (document.getElementById("powerTarget") as HTMLInputElement).value = "500";
+        (document.getElementById("powerTarget") as HTMLInputElement).value = "300";
         (document.getElementById("gutsTarget") as HTMLInputElement).value = "0";
         (document.getElementById("witTarget") as HTMLInputElement).value = "0";
+    } else if (cardPresetsSelect.value == "mediumCMguts") {
+        cardSelects[0].value = "[Fire at My Heels] Kitasan Black";
+        cardLevels[0].value = "50";
+        cardSelects[1].value = "[Urara\u0027s Day Off!] Haru Urara";
+        cardLevels[1].value = "50";
+        cardSelects[2].value = "[Nothing Escapes the Vice Prez] Air Groove";
+        cardLevels[2].value = "45";
+        cardSelects[3].value = "[Piece of Mind] Super Creek";
+        cardLevels[3].value = "35";
+        cardSelects[4].value = "[Just Keep Going] Matikanetannhauser";
+        cardLevels[4].value = "50";
+        cardSelects[5].value = "Empty";
+        cardLevels[5].value = "50";
+        (document.getElementById("speedTarget") as HTMLInputElement).value = "1150";
+        (document.getElementById("staminaTarget") as HTMLInputElement).value = "700";
+        (document.getElementById("powerTarget") as HTMLInputElement).value = "300";
+        (document.getElementById("gutsTarget") as HTMLInputElement).value = "1200";
+        (document.getElementById("witTarget") as HTMLInputElement).value = "0";
+    } else if (cardPresetsSelect.value == "allSR") {
+        ClearAvailableCards();
+        let ssrs = SupportCard.getAllCards().filter(c => c.Rarity == 2);
+        for (let i = 0; i < ssrs.length; i++) {
+            if (Array.from(cardSelects).find(c => c.value == ssrs[i].CardName) === undefined) {
+                AddAvailableCard(ssrs[i].CardName);
+            }
+        }
+    } else if (cardPresetsSelect.value == "allFutureSSR") {
+        ClearAvailableCards();
+        let ssrs = SupportCard.getAllCards().filter(c => c.Rarity == 3 && c.CardName.includes("Future SSR"));
+        for (let i = 0; i < ssrs.length; i++) {
+            if (Array.from(cardSelects).find(c => c.value == ssrs[i].CardName) === undefined) {
+                AddAvailableCard(ssrs[i].CardName);
+            }
+        }
     } else if (cardPresetsSelect.value == "allSSR") {
         ClearAvailableCards();
-        let ssrs = SupportCard.getAllCards().filter(c => c.Rarity == 3);
+        let ssrs = SupportCard.getAllCards().filter(c => c.Rarity == 3 && !c.CardName.includes("Future SSR"));
+        for (let i = 0; i < ssrs.length; i++) {
+            if (Array.from(cardSelects).find(c => c.value == ssrs[i].CardName) === undefined) {
+                AddAvailableCard(ssrs[i].CardName);
+            }
+        }
+    } else if (cardPresetsSelect.value == "allBigTE") {
+        ClearAvailableCards();
+        let ssrs = SupportCard.getAllCards().filter(c => c.Rarity >= 2 && c.getEffectStrengthAtLevel(50, SupportCardEffectType.TrainingEffectiveness) >= 15);
         for (let i = 0; i < ssrs.length; i++) {
             if (Array.from(cardSelects).find(c => c.value == ssrs[i].CardName) === undefined) {
                 AddAvailableCard(ssrs[i].CardName);
@@ -168,11 +211,18 @@ function AddAvailableCard(name: string = "") {
     select.classList = "card";
     InitializeCardSelect(select, false);
 
+    let button = document.createElement('button');
+    button.onclick = (e) => {RemoveAvailableCard(select)};
+    button.classList = "cardRemoveButton";
+    button.innerText = "x";
+
     availableCardBrs.push(br);
     availableCardSelects.push(select);
     availableCardLevels.push(input);
+    availableCardButtons.push(button);
     availableCardsDiv.appendChild(select);
     availableCardsDiv.appendChild(input);
+    availableCardsDiv.appendChild(button);
     availableCardsDiv.appendChild(br);
 
     if (name != "") {
@@ -180,15 +230,21 @@ function AddAvailableCard(name: string = "") {
     }
 }
 
-function RemoveAvailableCard() {
+function RemoveAvailableCard(select: null | HTMLSelectElement = null) {
+    if (select == null) {
+        select = availableCardSelects[availableCardBrs.length-1];
+    }
+    let index = availableCardSelects.findIndex(s => s == select);
     if (availableCardSelects.length > 0) {
         console.log("Removed card");
-        availableCardsDiv.removeChild(availableCardBrs[availableCardBrs.length-1]);
-        availableCardsDiv.removeChild(availableCardSelects[availableCardSelects.length-1]);
-        availableCardsDiv.removeChild(availableCardLevels[availableCardLevels.length-1]);
-        availableCardBrs.pop();
-        availableCardSelects.pop();
-        availableCardLevels.pop();
+        availableCardsDiv.removeChild(availableCardButtons[index]);
+        availableCardsDiv.removeChild(availableCardBrs[index]);
+        availableCardsDiv.removeChild(availableCardSelects[index]);
+        availableCardsDiv.removeChild(availableCardLevels[index]);
+        availableCardBrs.splice(index, 1);
+        availableCardSelects.splice(index, 1);
+        availableCardLevels.splice(index, 1);
+        availableCardButtons.splice(index, 1);
     }
 }
 
@@ -219,6 +275,7 @@ function InitializeCardSelects() {
 
 function InitializeCardSelect(select: HTMLSelectElement, hasEmptyOption: boolean = true) {
     let namesSSR = [];
+    let namesFutureSSR = [];
     let namesSR = [];
     let namesR = [];
     for (let i = 0; i < SupportCard.getAllCards().length; i++) {
@@ -227,11 +284,14 @@ function InitializeCardSelect(select: HTMLSelectElement, hasEmptyOption: boolean
             namesR.push(name);
         } else if (SupportCard.getAllCards()[i].Rarity == 2) {
             namesSR.push(name);
+        } else if (SupportCard.getAllCards()[i].Rarity == 3 && name.includes("Future SSR")) {
+            namesFutureSSR.push(name);
         } else if (SupportCard.getAllCards()[i].Rarity == 3) {
             namesSSR.push(name);
         }
     }
     namesSSR.sort((a, b) => a.replace(/\[.+\]/, "").localeCompare(b.replace(/\[.+\]/, "")));
+    namesFutureSSR.sort((a, b) => a.replace(/\[.+\]/, "").localeCompare(b.replace(/\[.+\]/, "")));
     namesSR.sort((a, b) => a.replace(/\[.+\]/, "").localeCompare(b.replace(/\[.+\]/, "")));
     namesR.sort((a, b) => a.replace(/\[.+\]/, "").localeCompare(b.replace(/\[.+\]/, "")));
 
@@ -268,6 +328,17 @@ function InitializeCardSelect(select: HTMLSelectElement, hasEmptyOption: boolean
         let option = document.createElement('option');
         option.value = namesR[j];
         option.innerHTML = namesR[j];
+        optgroup.appendChild(option);
+    }
+    select.appendChild(optgroup);
+    
+
+    optgroup = document.createElement('optgroup');
+    optgroup.label = "Future SSR";
+    for (let j = 0; j < namesFutureSSR.length; j++) {
+        let option = document.createElement('option');
+        option.value = namesFutureSSR[j];
+        option.innerHTML = namesFutureSSR[j];
         optgroup.appendChild(option);
     }
     select.appendChild(optgroup);

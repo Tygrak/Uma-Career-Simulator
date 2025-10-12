@@ -200,6 +200,10 @@ export class Simulator {
             return -2;
         }
         if ((gameState.energy < 65 && valueMax < -5) || (gameState.energy < 60 && valueMax < 6) || (gameState.energy < 50 && valueMax < 12) || (gameState.energy < 40 && valueMax < 20) || (gameState.energy < 30 && valueMax < 50) || valueMaxFailure > valueMax || valueMaxFailure > 30) {
+            if (gameState.turn >= 76) {
+                this.log += "last turn wit\n";
+                return 4;
+            }
             return -1;
         }
         return valueMaxId;
