@@ -158,10 +158,10 @@ cardPresetsSelect.onchange = (e) => {
         (document.getElementById("witTarget") as HTMLInputElement).value = "0";
     } else if (cardPresetsSelect.value == "allSR") {
         ClearAvailableCards();
-        let ssrs = SupportCard.getAllCards().filter(c => c.Rarity == 2);
-        for (let i = 0; i < ssrs.length; i++) {
-            if (Array.from(cardSelects).find(c => c.value == ssrs[i].CardName) === undefined) {
-                AddAvailableCard(ssrs[i].CardName);
+        let cards = SupportCard.getAllCards().filter(c => c.Rarity == 2);
+        for (let i = 0; i < cards.length; i++) {
+            if (Array.from(cardSelects).find(c => c.value == cards[i].CardName) === undefined) {
+                AddAvailableCard(cards[i].CardName);
             }
         }
     } else if (cardPresetsSelect.value == "allFutureSSR") {
@@ -173,6 +173,14 @@ cardPresetsSelect.onchange = (e) => {
             }
         }
     } else if (cardPresetsSelect.value == "allSSR") {
+        ClearAvailableCards();
+        let ssrs = SupportCard.getAllCards().filter(c => c.Rarity == 3 && !c.CardName.includes("Future SSR") && !c.CardName.includes("Upcoming SSR"));
+        for (let i = 0; i < ssrs.length; i++) {
+            if (Array.from(cardSelects).find(c => c.value == ssrs[i].CardName) === undefined) {
+                AddAvailableCard(ssrs[i].CardName);
+            }
+        }
+    } else if (cardPresetsSelect.value == "allSSRupcoming") {
         ClearAvailableCards();
         let ssrs = SupportCard.getAllCards().filter(c => c.Rarity == 3 && !c.CardName.includes("Future SSR"));
         for (let i = 0; i < ssrs.length; i++) {
@@ -186,6 +194,14 @@ cardPresetsSelect.onchange = (e) => {
         for (let i = 0; i < ssrs.length; i++) {
             if (Array.from(cardSelects).find(c => c.value == ssrs[i].CardName) === undefined) {
                 AddAvailableCard(ssrs[i].CardName);
+            }
+        }
+    } else if (cardPresetsSelect.value == "welfare") {
+        ClearAvailableCards();
+        let cards = SupportCard.getAllCards().filter(c => c.Rarity >= 2);
+        for (let i = 0; i < cards.length; i++) {
+            if (Array.from(cardSelects).find(c => c.value == cards[i].CardName) === undefined) {
+                AddAvailableCard(cards[i].CardName);
             }
         }
     }

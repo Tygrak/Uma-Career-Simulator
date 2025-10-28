@@ -2,10 +2,13 @@ const webpack = require('webpack');
 const path = require('path');
 
 const config = {
-  entry: './src/index.ts',
+  entry: {
+    index: './src/index.ts',
+    gacha: './src/gacha.ts'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
   module: {
     rules: [
