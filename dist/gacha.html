@@ -27,16 +27,25 @@
                         Chance Rare %
                         <input type="number" class="bigNumber" id="chanceCard3" value="0">
                         <br>
+                        Target 1 card
+                        <input type="checkbox" id="targetCard1">
+                        <br>
                     </div>
                 </div>
             <br>
-            <button id="submitButton">Run</button>
+            <button id="submitButton" style="width: 10rem; height: 3rem;">Run</button>
             
-            <div class="subtitle">Log</div>
+            <div></div>
+            <div class="subtitle">Results</div>
+            <div></div>
+
+            <canvas id="graph" class="graph" style="grid-column: span 2; min-height: 5px;"></canvas>
 
             <div id="log">
-
             </div>
+            <div id="log2">
+            </div>
+
         </div>
         <script src="gacha.bundle.js"></script>
     </body>
