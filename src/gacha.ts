@@ -31,6 +31,7 @@ function runTarget1Card() {
     let runs = parseInt((document.getElementById("numRuns") as HTMLInputElement).value);
     let num = parseInt((document.getElementById("numPulls") as HTMLInputElement).value);
     let chance1 = parseFloat((document.getElementById("chanceCard1") as HTMLInputElement).value);
+    let targetCopies = parseInt((document.getElementById("targetCopies") as HTMLInputElement).value);
     let results = [];
     let resultsCount = [0, 0, 0, 0, 0, 0];
     for (let run = 0; run < runs; run++) {
@@ -42,13 +43,13 @@ function runTarget1Card() {
             if (random < chance1) {
                 card1++;
             }
-            if (card1 + Math.floor(i / 200) >= 5) {
+            if (card1 + Math.floor(i / 200) >= targetCopies) {
                 results.push(i);
                 resultsCount[5]++;
                 break;
             }
         }
-        if (card1 + Math.floor(i / 200) < 5) {
+        if (card1 + Math.floor(i / 200) < targetCopies) {
             results.push(-1);
             resultsCount[card1 + Math.floor(i / 200)]++;
         }
@@ -65,7 +66,7 @@ function runTarget1Card() {
         result += `${numPulls == -10 ? "not mlb" : numPulls} => ${count} runs (${percent}%)\n`;
     }
     let result2 = "Result breakdown: \n";
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i <= targetCopies; i++) {
         if (i == 5) {
             result2 += "card mlb: ";
         } else if (i == 0) {
@@ -97,13 +98,18 @@ function runTarget1Card() {
 
     graphCanvas.hidden = false;
 
+    let labelLB = "MLB";
+    if (targetCopies < 5) {
+        labelLB = (targetCopies-1)+"LB";
+    }
+
     const chart = new Chart(graphCanvas, {
         type: "line",
         data: {
             labels,
             datasets: [
                 {
-                    label: "P(MLB by N pulls)",
+                    label: `P(${labelLB} by N pulls)`,
                     data,
                     borderWidth: 2,
                     pointRadius: 4,
@@ -121,7 +127,7 @@ function runTarget1Card() {
                 x: {
                     title: {
                         display: true,
-                        text: "Pulls (binned by 10)"
+                        text: "Number of Pulls"
                     },
                     ticks: {
                         color: "white"
@@ -152,7 +158,7 @@ function runTarget1Card() {
                         label: ctx => {
                             const pulls = ctx.label;
                             const prob = ctx.parsed.y;
-                            return `P(MLB by ${pulls} pulls): ${((prob == null ? 0 : prob) * 100).toFixed(2)}%`;
+                            return `P(${labelLB} by ${pulls} pulls): ${((prob == null ? 0 : prob) * 100).toFixed(2)}%`;
                         }
                     }
                 }
